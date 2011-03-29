@@ -15,45 +15,6 @@ EntityManager::EntityManager(Game* game, GameWorld* game_world)
   // Bouml preserved body end 00023164
 }
 
-shared_ptr<GameEntity> EntityManager::CreateGameEntity(irr::core::stringc name, irr::core::vector3df& position) 
-{
-  // Bouml preserved body begin 0001F7E4
-	//TODO
-	
-	//on crée le gameentity
-	shared_ptr<GameEntity> game_entity = make_shared<GameEntity>();
-	game_entity->set_game(game_);
-	
-
-	////////GRAPHIC//////////
-	//on cree le node et body 
-	irr::scene::ISceneNode* node = GraphicEngine::GetInstance()->CreateSceneNode(name);
-
-	if (node)
-	{
-		node->setPosition(position);
-		game_entity->set_node(node);
-
-
-	////////PHYSIC///////////
-		IRigidBody* body = PhysicEngine::GetInstance()->CreateRigidBody(node,10,true);
-		if(body)
-		{
-			game_entity->set_body(body);
-		}
-
-	}
-	
-	
-	//On rajoute game_entity dans le gameworld	
-	game_world_->addGameEntity(game_entity);
-
-	
-	return game_entity;
-	
-  // Bouml preserved body end 0001F7E4
-}
-
 shared_ptr<GameEntity> EntityManager::CreateGameEntity(shared_ptr<GameEntity> game_entity, irr::core::stringc name, irr::core::vector3df& position) 
 {
   // Bouml preserved body begin 00026CE4

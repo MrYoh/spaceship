@@ -13,6 +13,7 @@ using namespace irr;
 class GraphicEngine;
 class PhysicEngine;
 class GameEntity;
+class PlayerShipEntity;
 
 class Game 
 {

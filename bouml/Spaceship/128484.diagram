@@ -88,20 +88,20 @@ relationcanvas 131044 relation_ref 131300 // <dependency>
 end
 relationcanvas 131300 relation_ref 145124 // <directional composition>
   from ref 128228 z 2006 to ref 131172
-  role_a_pos 415 402 3000 no_role_b
+  role_a_pos 415 408 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 131428 relation_ref 145252 // <unidirectional association>
   from ref 128484 z 2012 to ref 131172
-  role_a_pos 435 407 3000 no_role_b
+  role_a_pos 424 424 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 131556 relation_ref 145380 // <association>
-  from ref 131172 z 2006 stereotype "<<vector>>" xyz 508 576 3000 to point 537 715
+  from ref 131172 z 2006 stereotype "<<vector>>" xyz 508 584 3000 to point 537 715
   line 131684 z 2006 to point 538 718
   line 131812 z 2006 to point 536 718
   line 131940 z 2006 to ref 128356
-  role_a_pos 402 714 3000 role_b_pos 542 442 3000
+  role_a_pos 402 714 3000 role_b_pos 542 458 3000
   multiplicity_a_pos 402 739 3000 no_multiplicity_b
 end
 end

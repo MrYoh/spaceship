@@ -11,7 +11,7 @@ class SqlEngine;
 class EngineEvent;
 class EntityManager;
 
-class GraphicEngine : public Singleton<GraphicEngine> 
+class GraphicEngine : public Singleton<GraphicEngine>, public IEventReceiver 
 {
   public:
     GraphicEngine();

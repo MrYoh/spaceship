@@ -31,10 +31,13 @@ bool GraphicEngine::CreateWindow()
   
   	driver_=device_->getVideoDriver();
   	scene_manager_=device_->getSceneManager();
+	
   	//guiEnv=device->getGUIEnvironment();
 
 	device_->getFileSystem()->addFolderFileArchive("./media/");
   
+	device_->setEventReceiver(this);
+
 	last_frame_time_ = 0;
   	
   	return true;
@@ -210,7 +213,9 @@ bool GraphicEngine::OnEvent(const SEvent& event)
   // Bouml preserved body begin 00026964
 	// Remember whether each key is down or up
     if (event.EventType == irr::EET_KEY_INPUT_EVENT)
+	{
             key_is_down_[event.KeyInput.Key] = event.KeyInput.PressedDown;
+	}
 
     return false;
   // Bouml preserved body end 00026964

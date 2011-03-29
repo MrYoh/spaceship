@@ -25,8 +25,6 @@ class EntityManager
   public:
     EntityManager(Game* game, GameWorld* game_world);
 
-    shared_ptr<GameEntity> CreateGameEntity(irr::core::stringc name, irr::core::vector3df& position = irr::core::vector3df(0,0,0));
-
     shared_ptr<GameEntity> CreateGameEntity(shared_ptr<GameEntity> game_entity, irr::core::stringc name, irr::core::vector3df& position = irr::core::vector3df(0,0,0));
 
     bool RemoveGameEntity(shared_ptr<GameEntity> game_entity);

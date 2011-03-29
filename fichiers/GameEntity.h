@@ -21,11 +21,9 @@ class GameEntity
     void set_game(Game * value);
 
 
-  private:
+  protected:
     Game * game_;
 
-
-  protected:
     irr::scene::ISceneNode* node_;
 
     IRigidBody* body_;

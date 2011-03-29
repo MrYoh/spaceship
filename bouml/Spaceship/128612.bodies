@@ -1,5 +1,5 @@
 class EntityManager
-!!!128996.cpp!!!	CreateGameEntity(in name : irr::core::stringc, in position : irr::core::vector3df& = irr::core::vector3df(0,0,0)) : shared_ptr<GameEntity>
+!!!158948.cpp!!!	CreateGameEntity(in game_entity : shared_ptr<GameEntity>, in name : irr::core::stringc, in position : irr::core::vector3df& = irr::core::vector3df(0,0,0)) : shared_ptr<GameEntity>
 	//TODO
 	
 	//on crée le gameentity
