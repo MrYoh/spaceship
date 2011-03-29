@@ -9,7 +9,7 @@ Game::Game()
 	entity_manager_(this, &game_world_)
 {
   // Bouml preserved body begin 0001F964
-	LoadLevel();
+	//LoadLevel();
   // Bouml preserved body end 0001F964
 }
 
