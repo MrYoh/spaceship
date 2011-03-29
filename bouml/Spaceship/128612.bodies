@@ -1,0 +1,38 @@
+class EntityManager
+!!!128996.cpp!!!	CreateGameEntity(in name : irr::core::stringc, in position : irr::core::vector3df& = irr::core::vector3df(0,0,0)) : shared_ptr<GameEntity>
+	//TODO
+	
+	//on crée le gameentity
+	shared_ptr<GameEntity> game_entity = make_shared<GameEntity>();
+
+	game_entity->set_game(game_);
+	
+	//on cree le node et body 
+	irr::scene::ISceneNode* node = GraphicEngine::GetInstance()->CreateSceneNode(name);
+
+	if (node)
+	{
+		node->setPosition(position);
+		game_entity->set_node(node);
+
+		IRigidBody* body = PhysicEngine::GetInstance()->CreateRigidBody(node,10,true);
+		if(body)
+		{
+			game_entity->set_body(body);
+		}
+
+	}
+	
+	
+	//On rajoute game_entity dans le gameworld	
+	game_world_->addGameEntity(game_entity);
+
+	
+	return game_entity;
+	
+!!!143332.cpp!!!	RemoveGameEntity(in game_entity : shared_ptr<GameEntity>) : bool
+	//TODO remove
+	return false;
+!!!143460.cpp!!!	RemoveAll() : bool
+	//TODO remove
+	return false;

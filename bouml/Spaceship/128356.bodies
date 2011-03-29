@@ -1,0 +1,110 @@
+class SqlEngine
+!!!136548.cpp!!!	SqlEngine()
+	is_setup_ok_=false;;
+!!!151524.cpp!!!	~SqlEngine()
+	sqlite3_close(data_base_);
+!!!151140.cpp!!!	Initialize() : bool
+	rc_=sqlite3_open("./data/data.db",&data_base_);
+    if(rc_)
+    {
+        fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(data_base_));
+        sqlite3_close(data_base_);
+        return false;
+    }
+    
+	return true;
+!!!151268.cpp!!!	Execute(in requete : irr::core::stringc) : sqlite3_stmt*
+	if(!is_setup_ok_)
+		Initialize();
+	
+	if(!rc_)
+	{
+		sqlite3_stmt* prepared_statement;
+		if(sqlite3_prepare_v2(data_base_, requete.c_str(), -1, &prepared_statement, NULL) == SQLITE_OK)
+			return prepared_statement;
+	}
+
+	return 0;
+
+!!!151396.cpp!!!	Test(in requete : irr::core::stringc) : void
+
+	
+	//irr::core::stringc  a = "select ID_NODE as ID from T_NODE;";
+
+	if(!rc_)
+	{
+		sqlite3_stmt *prepared_statement;
+		if(sqlite3_prepare_v2(data_base_, requete.c_str(), -1, &prepared_statement, NULL) == SQLITE_OK)
+		{
+			// On boucle tant que l'on trouve des objets dans la BDD
+			while(sqlite3_step(prepared_statement) == SQLITE_ROW)
+			{
+				//on recupere les resultats de la colonne coresspondante 
+				irr::core::stringc lol=(char *)sqlite3_column_text(prepared_statement, 0);
+				
+				//irr::core::stringc a (lol.c_str());//std::cout << lol;
+ 				system("pause");
+			}
+			sqlite3_finalize(prepared_statement);
+		}
+    }
+	
+!!!150884.cpp!!!	GetNodeData(in name : irr::core::stringc) : EngineEvent&
+	typedef irr::core::vector3df Vector3df;
+	typedef irr::core::stringc Stringc;
+	typedef std::pair<Stringc, Vector3df> PairVector3df;
+	typedef std::pair<Stringc, Stringc> PairStringc;
+
+
+	if(!is_setup_ok_)
+	{
+		Initialize();
+	}
+	
+
+	//la requete
+	irr::core::stringc requete;
+	requete  = "select MESH, TEXTURE from T_NODE where NAME = '";
+	requete += name.c_str();
+	requete += "';";
+
+		
+	sqlite3_stmt* prepared_statement = Execute(requete);
+	
+		// On boucle tant que l'on trouve des objets dans la BDD
+		while(sqlite3_step(prepared_statement) == SQLITE_ROW)
+		{
+			//on recupere les resultats de la colonne coresspondante 
+			Stringc mesh = (char *)sqlite3_column_text(prepared_statement, 0);
+			engine_event_.string_data_.insert(PairStringc("mesh",mesh));
+
+			Stringc texture = (char *)sqlite3_column_text(prepared_statement, 1);
+			engine_event_.string_data_.insert(PairStringc("texture",texture));
+				
+			//irr::core::stringc a (lol.c_str());//std::cout << lol;
+ 		}
+		sqlite3_finalize(prepared_statement);
+	/*
+	irr::u32 type(0);
+	engine_event_.type_ = type;
+	
+	Vector3df position(0,0,0);
+	engine_event_.vector3df_data_.insert(PairVector3df("position",position));
+	
+	Vector3df scale(0,0,0);
+	engine_event_.vector3df_data_.insert(PairVector3df("scale",scale));
+
+	Vector3df rotation(0,0,0);
+	engine_event_.vector3df_data_.insert(PairVector3df("rotation",rotation));
+
+	Stringc mesh("sydney.md2");
+	engine_event_.string_data_.insert(PairStringc("mesh",mesh));
+
+	Stringc texture("sydney.bmp");
+	engine_event_.string_data_.insert(PairStringc("texture",texture));*/
+
+		
+	return engine_event_;
+!!!151012.cpp!!!	GetBodyData(in name : irr::core::stringc) : EngineEvent&
+
+	return engine_event_;

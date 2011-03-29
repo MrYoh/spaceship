@@ -1,0 +1,3 @@
+class GameWorld
+!!!143844.cpp!!!	addGameEntity(in game_entity : shared_ptr<GameEntity>) : void
+	game_entities_.push_back(game_entity);

@@ -1,0 +1,14 @@
+window_sizes 919 996 295 824 800 82
+diagrams
+  active  classdiagram_ref 128100 // sql
+    618 838 100 4 0 0
+end
+show_stereotypes
+selected attribute_ref 128228 // name
+open
+  class_ref 128100 // T_NODE_TYPE
+  class_ref 128228 // node
+  class_ref 128356 // ANIMATEDMESH
+  class_ref 128484 // lignnode
+end
+end

@@ -1,0 +1,28 @@
+class Game
+!!!129380.cpp!!!	Game()
+	//LoadLevel();
+!!!143076.cpp!!!	~Game()
+	//On détruit tout les singletons
+	PhysicEngine::Kill();
+	GraphicEngine::Kill();
+!!!129124.cpp!!!	LoadLevel() : bool
+	//On lance l'interface graphique
+	graphic_engine_ = GraphicEngine::GetInstance();
+	graphic_engine_->CreateWindow();
+	graphic_engine_->CreateCamera();
+	
+	//on crée le moteur physique
+	physic_engine_ = PhysicEngine::GetInstance();
+	physic_engine_->Initialize();
+	return true;
+!!!129252.cpp!!!	UpdateFrame() : bool
+	entity_manager_.CreateGameEntity("faery", core::vector3df(0,0,0));
+	entity_manager_.CreateGameEntity("sydney", core::vector3df(0,0,50));
+	entity_manager_.CreateGameEntity("sydney", core::vector3df(50,0,0));
+	
+	while(graphic_engine_->UpdateFrame())
+	{
+		physic_engine_->UpdateFrame();
+	};
+	
+	return true;
