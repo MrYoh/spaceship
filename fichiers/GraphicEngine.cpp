@@ -24,6 +24,8 @@ bool GraphicEngine::CreateWindow()
   	driver_=device_->getVideoDriver();
   	scene_manager_=device_->getSceneManager();
   	//guiEnv=device->getGUIEnvironment();
+
+	device_->getFileSystem()->addFolderFileArchive("./media/");
   
 	last_frame_time_ = 0;
   	
@@ -45,36 +47,79 @@ irr::scene::ISceneNode* GraphicEngine::CreateSceneNode(irr::core::stringc name, 
   // Bouml preserved body begin 0001F5E4
 	//TODO: create scene node
 
-
-
-
+	bool is_mesh(false), is_node(false);
 	
-	
-		//irr::scene::IAnimatedMesh* mesh = sceneManager->getMesh(pathModele.c_str());
+	bool is_position(false), is_scale(false), is_rotation(false);
+
+
+	//on recupere les données de la base SQL
+	SqlEngine sql;
+	EngineEvent node_data = sql.GetNodeData(name);
+
+	//typedef
+	typedef irr::core::vector3df Vector3df;
+	typedef irr::core::stringc Stringc;
+
+	//on cherche
+	//dans les vector3df
+	std::map<Stringc, Vector3df>::const_iterator
+		it_vector3df_end(node_data.vector3df_data_.end()),
+		it_position(node_data.vector3df_data_.find("position")),
+		it_scale(node_data.vector3df_data_.find("scale")),
+		it_rotation(node_data.vector3df_data_.find("rotation"));
+		
+
+	//dans les stringc
+	std::map<Stringc, Stringc>::const_iterator
+		it_string_end(node_data.string_data_.end()),
+		it_mesh(node_data.string_data_.find("mesh")),
+		it_texture(node_data.string_data_.find("texture"));
+		
+
+	//on cree le mesh
+	if(it_mesh!=it_string_end)
+	{
+		scene::IAnimatedMesh* mesh = scene_manager_->getMesh(it_mesh->second);
+		if(mesh)
+		{
+			is_mesh=true;
+			//on cree le node
+			if(is_mesh)
+			{
+				scene::IAnimatedMeshSceneNode* node = scene_manager_->addAnimatedMeshSceneNode(mesh);
+
+				if (node)
+				{
+					node->setID(id);
+			
+					node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+					//node->setMaterialFlag(irr::video::EMF_WIREFRAME, false);
+					node->setMD2Animation(irr::scene::EMAT_STAND);
+
+					if(it_texture!=it_string_end)
+					{
+						node->setMaterialTexture( 0, driver_->getTexture(it_texture->second) );
+					}
+					return node;	
+				}
+			}
+		}
+	}
+			
+
+		/*//irr::scene::IAnimatedMesh* mesh = sceneManager->getMesh(pathModele.c_str());
 		scene::IAnimatedMesh* mesh = scene_manager_->getMesh("./media/sydney.md2");
 			if (!mesh)
 			{
 				//TODO si on ne trouve pas le mesh   
 				//device->drop();
 					//return 1;
-			}
+			}*/
 
-		
-			scene::IAnimatedMeshSceneNode* node = scene_manager_->addAnimatedMeshSceneNode( mesh);
 
-		if (node)
-			{
-				 node->setID(id);
-			
-					node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
-					node->setMaterialFlag(irr::video::EMF_WIREFRAME, true);
-					
-					node->setMD2Animation(irr::scene::EMAT_STAND);
-					node->setMaterialTexture( 0, driver_->getTexture("./media/sydney.bmp") );
-			return node;	
-		}
 	
-		return 0;
+	
+	return 0;
 
   // Bouml preserved body end 0001F5E4
 }
@@ -87,20 +132,52 @@ bool GraphicEngine::UpdateFrame()
 		last_frame_time_=device_->getTimer()->getTime();
 	}
 	
+
+
+
+
+
+
 	if(device_->run())
 	{
 		if (device_->isWindowActive())
 		{
-            const f32 now = device_->getTimer()->getTime();
+            //Le timer
+			const f32 now = device_->getTimer()->getTime();
             frame_delta_time_ = (f32)(now - last_frame_time_) / 1000.f; // Time in seconds
             last_frame_time_ = now;
 
 			
+
+			//On commence la scene
 			driver_->beginScene(true,
 					true,
 					video::SColor(255,100,101,140));
 			scene_manager_->drawAll();
 			//guiEnv->drawAll();
+
+
+
+//////////////////TEST
+using namespace scene;
+using namespace core;
+using namespace video;
+
+
+
+
+
+
+
+
+
+		//////////////////
+
+
+
+
+
+
 
 			driver_->endScene();
 
@@ -129,12 +206,12 @@ irr::scene::ISceneNode* GraphicEngine::CreateCamera()
 {
   // Bouml preserved body begin 0001FBE4
 
-	irr::scene::ISceneNode* node = scene_manager_->addCameraSceneNodeFPS();
-	/*irr::scene::ISceneNode* node = scene_manager_->addCameraSceneNode(
+	//irr::scene::ISceneNode* node = scene_manager_->addCameraSceneNodeFPS();
+	irr::scene::ISceneNode* node = scene_manager_->addCameraSceneNode(
 		0,
 		irr::core::vector3df(0,500,0), 
 		irr::core::vector3df(0,0,0),
-		0);*/
+		0);
 
 	return node;
   // Bouml preserved body end 0001FBE4

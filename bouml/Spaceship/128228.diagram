@@ -47,7 +47,7 @@ relationcanvas 129252 relation_ref 129252 // <directional aggregation>
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 129636 relation_ref 129380 // <directional aggregation>
-  from ref 128228 z 2001 stereotype "<<vector>>" xyz 853.5 648 3000 to ref 129508
+  from ref 128228 z 2001 stereotype "<<vector>>" xyz 853 648 3000 to ref 129508
   role_a_pos 891 653 3000 no_role_b
   multiplicity_a_pos 867 653 3000 no_multiplicity_b
 end

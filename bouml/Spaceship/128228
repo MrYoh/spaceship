@@ -1,6 +1,6 @@
 format 76
 "sql" // sql
-  revision 2
+  revision 3
   modified_by 100 "Yoh"
   // class settings
   //class diagram settings
@@ -64,14 +64,6 @@ ${inlines}
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 131300 // <generalisation>
-	relation 130404 ---|>
-	  a public
-	    cpp default "${type}"
-	    classrelation_ref 131300 // <generalisation>
-	  b parent class_ref 128996 // Singleton
-      end
-
       operation 136548 "SqlEngine"
 	public explicit_return_type ""
 	nparams 0
@@ -85,6 +77,46 @@ ${inlines}
 	
 	
 	
+      end
+
+      operation 150884 "GetNodeData"
+	preserve_cpp_body_indent public explicit_return_type "EngineEvent&"
+	nparams 1
+	  param in name "name" explicit_type "irr::core::strinc"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent 
+	
+      end
+
+      operation 151012 "GetBodyData"
+	preserve_cpp_body_indent public explicit_return_type "EngineEvent&"
+	nparams 1
+	  param in name "name" explicit_type "irr::core::stringc"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent 
+	
+      end
+
+      classrelation 131300 // <generalisation>
+	relation 130404 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 131300 // <generalisation>
+	  b parent class_ref 128996 // Singleton
       end
 
       attribute 136676 "data_base"
@@ -113,6 +145,15 @@ ${inlines}
 	    cpp default "#include in header"
 	    classrelation_ref 139492 // <dependency>
 	  b parent class_ref 136036 // sqlite3
+      end
+
+      classrelation 153060 // engine_event (<directional composition>)
+	relation 151908 *-->
+	  a role_name "engine_event" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
+"
+	    classrelation_ref 153060 // engine_event (<directional composition>)
+	  b parent class_ref 128484 // EngineEvent
       end
     end
 

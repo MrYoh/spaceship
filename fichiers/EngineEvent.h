@@ -9,7 +9,7 @@ using namespace irr;
 
 class EngineEvent 
 {
-  private:
+  public:
     u32 type_;
 
     map<irr::core::stringc, irr::core::stringc> string_data_;
