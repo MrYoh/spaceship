@@ -26,6 +26,8 @@ class GraphicEngine : public Singleton<GraphicEngine>
 
     inline  irr::IrrlichtDevice* device();
 
+    inline const f32 frame_delta_time() const;
+
 
   private:
     irr::IrrlichtDevice* device_;
@@ -41,10 +43,6 @@ class GraphicEngine : public Singleton<GraphicEngine>
     f32 last_fps_;
 
     EntityManager * _;
-
-
-  public:
-    inline const f32 frame_delta_time() const;
 
 };
 inline  irr::IrrlichtDevice* GraphicEngine::device() 

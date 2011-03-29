@@ -15,75 +15,6 @@ SqlEngine::~SqlEngine()
   // Bouml preserved body end 00024FE4
 }
 
-EngineEvent& SqlEngine::GetNodeData(irr::core::stringc name) 
-{
-  // Bouml preserved body begin 00024D64
-	typedef irr::core::vector3df Vector3df;
-	typedef irr::core::stringc Stringc;
-	typedef std::pair<Stringc, Vector3df> PairVector3df;
-	typedef std::pair<Stringc, Stringc> PairStringc;
-
-
-	if(!is_setup_ok_)
-	{
-		Initialize();
-	}
-	
-
-	//la requete
-	irr::core::stringc requete;
-	requete  = "select MESH, TEXTURE from T_NODE where NAME = '";
-	requete += name.c_str();
-	requete += "';";
-
-		
-	sqlite3_stmt* prepared_statement = Execute(requete);
-	
-		// On boucle tant que l'on trouve des objets dans la BDD
-		while(sqlite3_step(prepared_statement) == SQLITE_ROW)
-		{
-			//on recupere les resultats de la colonne coresspondante 
-			Stringc mesh = (char *)sqlite3_column_text(prepared_statement, 0);
-			engine_event_.string_data_.insert(PairStringc("mesh",mesh));
-
-			Stringc texture = (char *)sqlite3_column_text(prepared_statement, 1);
-			engine_event_.string_data_.insert(PairStringc("texture",texture));
-				
-			//irr::core::stringc a (lol.c_str());//std::cout << lol;
- 		}
-		sqlite3_finalize(prepared_statement);
-	/*
-	irr::u32 type(0);
-	engine_event_.type_ = type;
-	
-	Vector3df position(0,0,0);
-	engine_event_.vector3df_data_.insert(PairVector3df("position",position));
-	
-	Vector3df scale(0,0,0);
-	engine_event_.vector3df_data_.insert(PairVector3df("scale",scale));
-
-	Vector3df rotation(0,0,0);
-	engine_event_.vector3df_data_.insert(PairVector3df("rotation",rotation));
-
-	Stringc mesh("sydney.md2");
-	engine_event_.string_data_.insert(PairStringc("mesh",mesh));
-
-	Stringc texture("sydney.bmp");
-	engine_event_.string_data_.insert(PairStringc("texture",texture));*/
-
-		
-	return engine_event_;
-  // Bouml preserved body end 00024D64
-}
-
-EngineEvent& SqlEngine::GetBodyData(irr::core::stringc name) 
-{
-  // Bouml preserved body begin 00024DE4
-
-	return engine_event_;
-  // Bouml preserved body end 00024DE4
-}
-
 bool SqlEngine::Initialize() 
 {
   // Bouml preserved body begin 00024E64
@@ -143,5 +74,104 @@ void SqlEngine::Test(irr::core::stringc requete)
     }
 	
   // Bouml preserved body end 00024F64
+}
+
+EngineEvent& SqlEngine::GetNodeData(irr::core::stringc name) 
+{
+  // Bouml preserved body begin 00024D64
+	typedef irr::core::vector3df Vector3df;
+	typedef irr::core::stringc Stringc;
+	typedef std::pair<Stringc, Vector3df> PairVector3df;
+	typedef std::pair<Stringc, Stringc> PairStringc;
+
+	
+	if(!is_setup_ok_)
+	{
+		Initialize();
+	}
+	
+	//variqble str pour requete
+	irr::core::stringc requete;
+	sqlite3_stmt* prepared_statement;
+
+	
+
+	//on recupere le type
+	requete  = "select t_node_type.name ";
+	requete += "from t_node_type ";
+	requete += "inner join t_node ";
+	requete += "on t_node_type.id_node_type = t_node.id_node_type ";
+	requete += "where t_node.name = '";
+	requete += name.c_str();
+	requete += "';";
+		
+	
+	prepared_statement = Execute(requete);
+
+	while(sqlite3_step(prepared_statement) == SQLITE_ROW)
+	{
+		Stringc type = (char *)sqlite3_column_text(prepared_statement, 0);
+
+		if(type == "animatedmesh")
+		{
+			//la requete
+			requete  = "select MESH, TEXTURE from T_ANIMATED_MESH INNER JOIN T_NODE ";
+			requete += "ON T_ANIMATED_MESH.ID_NODE = T_NODE.ID_NODE where NAME = '";
+			requete += name.c_str();
+			requete += "';";
+			
+			
+			prepared_statement = Execute(requete);
+	
+			// On boucle tant que l'on trouve des objets dans la BDD
+			if(sqlite3_step(prepared_statement) == SQLITE_ROW)
+			{
+				//on recupere les resultats de la colonne coresspondante 
+				Stringc mesh = (char *)sqlite3_column_text(prepared_statement, 0);
+				engine_event_.string_data_.insert(PairStringc("mesh",mesh));
+
+				Stringc texture = (char *)sqlite3_column_text(prepared_statement, 1);
+				engine_event_.string_data_.insert(PairStringc("texture",texture));
+ 			}
+		}
+		else if (type == "node")
+		{
+
+		}
+		
+	}
+
+	
+	sqlite3_finalize(prepared_statement);
+	/*
+	irr::u32 type(0);
+	engine_event_.type_ = type;
+	
+	Vector3df position(0,0,0);
+	engine_event_.vector3df_data_.insert(PairVector3df("position",position));
+	
+	Vector3df scale(0,0,0);
+	engine_event_.vector3df_data_.insert(PairVector3df("scale",scale));
+
+	Vector3df rotation(0,0,0);
+	engine_event_.vector3df_data_.insert(PairVector3df("rotation",rotation));
+
+	Stringc mesh("sydney.md2");
+	engine_event_.string_data_.insert(PairStringc("mesh",mesh));
+
+	Stringc texture("sydney.bmp");
+	engine_event_.string_data_.insert(PairStringc("texture",texture));*/
+
+		
+	return engine_event_;
+  // Bouml preserved body end 00024D64
+}
+
+EngineEvent& SqlEngine::GetBodyData(irr::core::stringc name) 
+{
+  // Bouml preserved body begin 00024DE4
+
+	return engine_event_;
+  // Bouml preserved body end 00024DE4
 }
 

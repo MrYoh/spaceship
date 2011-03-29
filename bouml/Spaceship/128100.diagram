@@ -2,11 +2,11 @@ format 76
 
 classcanvas 128100 class_ref 128100 // GraphicEngine
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyz 343 310 2000
+  xyz 290 346 2000
 end
 classcanvas 128228 class_ref 128356 // SqlEngine
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyz 403 66 2000
+  xyz 416 41 2000
 end
 classcanvas 128356 class_ref 128484 // EngineEvent
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
@@ -61,7 +61,7 @@ relationcanvas 129764 relation_ref 138084 // <dependency>
 end
 relationcanvas 129892 relation_ref 151908 // <directional composition>
   from ref 128228 z 2001 to ref 128356
-  role_a_pos 118 110 3000 no_role_b
+  role_a_pos 118 107 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 130020 relation_ref 152036 // <dependency>

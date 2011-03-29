@@ -17,6 +17,12 @@ class SqlEngine : public Singleton<SqlEngine>
 
     ~SqlEngine();
 
+    bool Initialize();
+
+    sqlite3_stmt* Execute(irr::core::stringc requete);
+
+    void Test(irr::core::stringc requete);
+
     EngineEvent& GetNodeData(irr::core::stringc name);
 
     EngineEvent& GetBodyData(irr::core::stringc name);
@@ -29,16 +35,6 @@ class SqlEngine : public Singleton<SqlEngine>
 
     EngineEvent engine_event_;
 
-
-  public:
-    bool Initialize();
-
-    sqlite3_stmt* Execute(irr::core::stringc requete);
-
-    void Test(irr::core::stringc requete);
-
-
-  private:
     bool is_setup_ok_;
 
 };

@@ -65,7 +65,7 @@ ${inlines}
       explicit_switch_type ""
       
       operation 128100 "CreateWindow"
-	public explicit_return_type "bool"
+	preserve_cpp_body_indent public explicit_return_type "bool"
 	nparams 0
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
@@ -80,7 +80,7 @@ ${inlines}
       end
 
       operation 128228 "CreateSetupWindow"
-	public explicit_return_type "bool"
+	preserve_cpp_body_indent public explicit_return_type "bool"
 	nparams 0
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
@@ -95,7 +95,7 @@ ${inlines}
       end
 
       operation 128484 "CreateSceneNode"
-	public explicit_return_type "irr::scene::ISceneNode*"
+	preserve_cpp_body_indent public explicit_return_type "irr::scene::ISceneNode*"
 	nparams 3
 	  param in name "name" explicit_type "irr::core::stringc"
 	  param in name "id" explicit_type "u32"
@@ -115,7 +115,7 @@ ${inlines}
       end
 
       operation 128868 "UpdateFrame"
-	public explicit_return_type "bool"
+	preserve_cpp_body_indent public explicit_return_type "bool"
 	nparams 0
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
@@ -164,6 +164,28 @@ ${inlines}
 	
 	idl_name_spec "get_${name}"
 	get_of_attribute attribute_ref 128100 // device
+      end
+
+      operation 129892 "frame_delta_time"
+	force_body_gen const cpp_inline public explicit_return_type "f32"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  return frame_delta_time_;
+}
+"
+	cpp_name_spec "${name}"
+	final 
+	java_name_spec "get${Name}"
+	php_final 
+	php_name_spec "get${Name}"
+	
+	python_name_spec "get${Name}"
+	
+	idl_name_spec "get_${name}"
+	get_of_attribute attribute_ref 128612 // frame_delta_time
       end
 
       attribute 128100 "device"
@@ -262,28 +284,6 @@ ${inlines}
 	    cpp default "${type}"
 	    classrelation_ref 129252 // <generalisation>
 	  b parent class_ref 128996 // Singleton
-      end
-
-      operation 129892 "frame_delta_time"
-	force_body_gen const cpp_inline public explicit_return_type "f32"
-	nparams 0
-	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}const ${type} ${name}${(}${)}${const}${volatile}${throw};
-"
-	cpp_def "${comment}${inline}const ${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
-{
-  return frame_delta_time_;
-}
-"
-	cpp_name_spec "${name}"
-	final 
-	java_name_spec "get${Name}"
-	php_final 
-	php_name_spec "get${Name}"
-	
-	python_name_spec "get${Name}"
-	
-	idl_name_spec "get_${name}"
-	get_of_attribute attribute_ref 128612 // frame_delta_time
       end
 
       classrelation 138980 // <dependency>

@@ -22,9 +22,10 @@ shared_ptr<GameEntity> EntityManager::CreateGameEntity(irr::core::stringc name, 
 	
 	//on crée le gameentity
 	shared_ptr<GameEntity> game_entity = make_shared<GameEntity>();
-
 	game_entity->set_game(game_);
 	
+
+	////////GRAPHIC//////////
 	//on cree le node et body 
 	irr::scene::ISceneNode* node = GraphicEngine::GetInstance()->CreateSceneNode(name);
 
@@ -33,6 +34,8 @@ shared_ptr<GameEntity> EntityManager::CreateGameEntity(irr::core::stringc name, 
 		node->setPosition(position);
 		game_entity->set_node(node);
 
+
+	////////PHYSIC///////////
 		IRigidBody* body = PhysicEngine::GetInstance()->CreateRigidBody(node,10,true);
 		if(body)
 		{

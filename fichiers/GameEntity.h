@@ -13,14 +13,6 @@ class GameWorld;
 
 class GameEntity 
 {
-  private:
-    Game * game_;
-
-    irr::scene::ISceneNode* node_;
-
-    IRigidBody* body_;
-
-
   public:
     void set_node(irr::scene::ISceneNode* value);
 
@@ -30,6 +22,12 @@ class GameEntity
 
 
   private:
+    Game * game_;
+
+    irr::scene::ISceneNode* node_;
+
+    IRigidBody* body_;
+
     GameWorld * game_world_;
 
 };

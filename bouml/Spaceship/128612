@@ -1,6 +1,6 @@
 format 76
 "Game" // Game
-  revision 3
+  revision 4
   modified_by 100 "Yoh"
   // class settings
   //class diagram settings
@@ -79,7 +79,7 @@ ${inlines}
       end
 
       operation 143076 "~Game"
-	public explicit_return_type ""
+	preserve_cpp_body_indent public explicit_return_type ""
 	nparams 0
 	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
 "
@@ -94,7 +94,7 @@ ${inlines}
       end
 
       operation 129124 "LoadLevel"
-	public explicit_return_type "bool"
+	preserve_cpp_body_indent public explicit_return_type "bool"
 	nparams 0
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
@@ -109,7 +109,7 @@ ${inlines}
       end
 
       operation 129252 "UpdateFrame"
-	public explicit_return_type "bool"
+	preserve_cpp_body_indent public explicit_return_type "bool"
 	nparams 0
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
@@ -200,55 +200,6 @@ ${inlines}
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 131044 // game (<unidirectional association>)
-	relation 130148 --->
-	  a role_name "game" private
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}_${value};
-"
-	    classrelation_ref 131044 // game (<unidirectional association>)
-	  b parent class_ref 129252 // Game
-	set_oper operation_ref 144356 // set_game
-      end
-
-      classrelation 131684 // <dependency>
-	relation 130788 -_->
-	  a package
-	    cpp default "#include in header"
-	    classrelation_ref 131684 // <dependency>
-	  b parent class_ref 128868 // irrlicht
-      end
-
-      classrelation 131940 // <dependency>
-	relation 131044 -_->
-	  a package
-	    cpp default "#include in header"
-	    classrelation_ref 131940 // <dependency>
-	  b parent class_ref 129380 // irrBullet
-      end
-
-      attribute 129764 "node"
-	private explicit_type "irr::scene::ISceneNode*"
-	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
-"
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	set_oper operation_ref 143972 // set_node
-      end
-
-      attribute 129892 "body"
-	private explicit_type "IRigidBody*"
-	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
-"
-	java_decl ""
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	get_oper operation_ref 144100 // body
-	set_oper operation_ref 144228 // set_body
-      end
-
       operation 143972 "set_node"
 	force_body_gen public explicit_return_type "void"
 	nparams 1
@@ -318,7 +269,55 @@ ${inlines}
 	set_of_relation classrelation_ref 131044 // game (<unidirectional association>)
       end
 
-      classrelation 146532 // game_world (<association>)
+      classrelation 131044 // game (<unidirectional association>)
+	relation 130148 --->
+	  a role_name "game" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}_${value};
+"
+	    classrelation_ref 131044 // game (<unidirectional association>)
+	  b parent class_ref 129252 // Game
+	set_oper operation_ref 144356 // set_game
+      end
+
+      classrelation 131684 // <dependency>
+	relation 130788 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 131684 // <dependency>
+	  b parent class_ref 128868 // irrlicht
+      end
+
+      classrelation 131940 // <dependency>
+	relation 131044 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 131940 // <dependency>
+	  b parent class_ref 129380 // irrBullet
+      end
+
+      attribute 129764 "node"
+	private explicit_type "irr::scene::ISceneNode*"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	set_oper operation_ref 143972 // set_node
+      end
+
+      attribute 129892 "body"
+	private explicit_type "IRigidBody*"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	set_oper operation_ref 144228 // set_body
+      end
+
+      classrelation 146532 // <association>
 	relation_ref 145380 // <association>
       end
     end
@@ -506,7 +505,7 @@ ${inlines}
 	  b role_name "game_world" private
 	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}_${value};
 "
-	    classrelation_ref 146532 // game_world (<association>)
+	    classrelation_ref 146532 // <association>
       end
     end
   end
