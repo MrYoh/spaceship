@@ -24,11 +24,19 @@ class GameEntity
   private:
     Game * game_;
 
+
+  protected:
     irr::scene::ISceneNode* node_;
 
     IRigidBody* body_;
 
+
+  private:
     GameWorld * game_world_;
+
+
+  public:
+    virtual void UpdateFrame();
 
 };
 #endif

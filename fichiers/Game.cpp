@@ -33,6 +33,11 @@ bool Game::LoadLevel()
 	//on crée le moteur physique
 	physic_engine_ = PhysicEngine::GetInstance();
 	physic_engine_->Initialize();
+
+	entity_manager_.CreateGameEntity("faery", core::vector3df(0,0,0));
+	entity_manager_.CreateGameEntity("sydney", core::vector3df(0,0,50));
+	entity_manager_.CreateGameEntity("sydney", core::vector3df(50,0,0));
+
 	return true;
   // Bouml preserved body end 0001F864
 }
@@ -40,13 +45,21 @@ bool Game::LoadLevel()
 bool Game::UpdateFrame() 
 {
   // Bouml preserved body begin 0001F8E4
-	entity_manager_.CreateGameEntity("faery", core::vector3df(0,0,0));
-	entity_manager_.CreateGameEntity("sydney", core::vector3df(0,0,50));
-	entity_manager_.CreateGameEntity("sydney", core::vector3df(50,0,0));
+
 	
 	while(graphic_engine_->UpdateFrame())
 	{
 		physic_engine_->UpdateFrame();
+
+		//on met a jour tous les game entities
+		vector<shared_ptr<GameEntity > > game_entities;
+		game_entities = game_world_.game_entities();
+
+		vector<shared_ptr<GameEntity > >::iterator it = game_entities.begin();
+		for( ; it != game_entities.end(); ++it)
+		{
+			(*it)->UpdateFrame();
+		}
 	};
 	
 	return true;

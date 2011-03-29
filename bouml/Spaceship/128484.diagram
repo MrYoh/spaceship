@@ -29,9 +29,9 @@ classcanvas 131172 class_ref 142564 // GameWorld
   xyz 486 387 2005
 end
 relationcanvas 128612 relation_ref 129380 // <directional aggregation>
-  from ref 128484 z 2012 stereotype "<<vector>>" xyz 319 657 2012 to ref 128356
-  role_a_pos 356 656 3000 no_role_b
-  multiplicity_a_pos 332 656 3000 no_multiplicity_b
+  from ref 128484 z 2012 stereotype "<<vector>>" xyz 322.5 657 2012 to ref 128356
+  role_a_pos 360 656 3000 no_role_b
+  multiplicity_a_pos 336 656 3000 no_multiplicity_b
 end
 relationcanvas 128740 relation_ref 129892 // <composition>
   from ref 128228 z 2012 to ref 128484
@@ -101,7 +101,7 @@ relationcanvas 131556 relation_ref 145380 // <association>
   line 131684 z 2006 to point 538 718
   line 131812 z 2006 to point 536 718
   line 131940 z 2006 to ref 128356
-  role_a_pos 392 708 3000 role_b_pos 542 442 3000
-  multiplicity_a_pos 392 733 3000 no_multiplicity_b
+  role_a_pos 402 714 3000 role_b_pos 542 442 3000
+  multiplicity_a_pos 402 739 3000 no_multiplicity_b
 end
 end

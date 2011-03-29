@@ -314,7 +314,7 @@ ${inlines}
 
       attribute 129764 "node"
 	private explicit_type "irr::scene::ISceneNode*"
-	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
+	cpp_visibility protected cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
 "
 	java_decl ""
 	php_decl ""
@@ -325,7 +325,7 @@ ${inlines}
 
       attribute 129892 "body"
 	private explicit_type "IRigidBody*"
-	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
+	cpp_visibility protected cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
 "
 	java_decl ""
 	php_decl ""
@@ -336,6 +336,21 @@ ${inlines}
 
       classrelation 146532 // <association>
 	relation_ref 145380 // <association>
+      end
+
+      operation 158564 "UpdateFrame"
+	preserve_cpp_body_indent cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent 
+	
       end
     end
 

@@ -22,5 +22,14 @@ class GameWorld
     vector<shared_ptr<GameEntity > > game_entities_;
     
 
+
+  public:
+    inline  vector<shared_ptr<GameEntity > > & game_entities();
+
 };
+inline  vector<shared_ptr<GameEntity > > & GameWorld::game_entities() 
+{
+  return game_entities_;
+}
+
 #endif

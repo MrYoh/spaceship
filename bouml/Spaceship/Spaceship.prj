@@ -48,6 +48,8 @@ format 76
   package_ref 128100 // graphic
 
   package_ref 128484 // physic
+
+  package_ref 135140 // spaceship
 preserve_bodies
 
 end
