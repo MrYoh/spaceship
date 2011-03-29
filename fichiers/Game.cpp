@@ -3,6 +3,7 @@
 #include "GraphicEngine.h"
 #include "PhysicEngine.h"
 #include "GameEntity.h"
+#include "PlayerShipEntity.h"
 
 Game::Game() 
 	:game_world_(),
@@ -34,9 +35,10 @@ bool Game::LoadLevel()
 	physic_engine_ = PhysicEngine::GetInstance();
 	physic_engine_->Initialize();
 
-	entity_manager_.CreateGameEntity("faery", core::vector3df(0,0,0));
-	entity_manager_.CreateGameEntity("sydney", core::vector3df(0,0,50));
-	entity_manager_.CreateGameEntity("sydney", core::vector3df(50,0,0));
+	shared_ptr<PlayerShipEntity> player_ship = make_shared<PlayerShipEntity>();
+	entity_manager_.CreateGameEntity(player_ship,"faery", core::vector3df(0,0,0));
+	//entity_manager_.CreateGameEntity("sydney", core::vector3df(0,0,50));
+	//entity_manager_.CreateGameEntity("sydney", core::vector3df(50,0,0));
 
 	return true;
   // Bouml preserved body end 0001F864
