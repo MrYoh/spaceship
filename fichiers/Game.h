@@ -25,6 +25,8 @@ class Game
 
     bool UpdateFrame();
 
+    bool IsKeyDown(irr::EKEY_CODE key_is_down);
+
 
   private:
     GraphicEngine * graphic_engine_;

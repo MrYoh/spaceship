@@ -2,7 +2,7 @@ format 76
 
 packagecanvas 128100 
   package_ref 128100 // graphic
-   color yellow  xyzwh 201 83 2000 341 307
+   color yellow  xyzwh 184 79 2000 343 309
 end
 classcanvas 128228 class_ref 128612 // EntityManager
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
@@ -10,7 +10,7 @@ classcanvas 128228 class_ref 128612 // EntityManager
 end
 classcanvas 128356 class_ref 128100 // GraphicEngine
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyz 353 137 2005
+  xyz 337 131 2005
 end
 packagecanvas 128996 
   package_ref 128484 // physic
@@ -38,7 +38,7 @@ classcanvas 130916 class_ref 128356 // SqlEngine
 end
 relationcanvas 128612 relation_ref 128484 // <aggregation>
   from ref 128228 z 2006 to ref 128356
-  role_a_pos 483 280 3000 no_role_b
+  role_a_pos 467 299 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 129252 relation_ref 129252 // <directional aggregation>
@@ -53,17 +53,17 @@ relationcanvas 129636 relation_ref 129380 // <directional aggregation>
 end
 relationcanvas 130020 relation_ref 129636 // <directional aggregation>
   from ref 129764 z 2006 to ref 128356
-  role_a_pos 483 256 3000 no_role_b
+  role_a_pos 467 278 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 130148 relation_ref 129764 // <directional aggregation>
   from ref 129764 z 2006 to ref 129124
-  role_a_pos 443 625 3000 no_role_b
+  role_a_pos 443 626 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 130276 relation_ref 129892 // <composition>
   from ref 129764 z 2001 to ref 128228
-  role_a_pos 789 424 3000 role_b_pos 789 419 3000
+  role_a_pos 789 424 3000 role_b_pos 789 435 3000
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 130788 relation_ref 131556 // <dependency>

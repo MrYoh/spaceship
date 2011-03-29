@@ -4,6 +4,14 @@
 #include "EngineEvent.h"
 #include "EntityManager.h"
 
+GraphicEngine::GraphicEngine() 
+{
+  // Bouml preserved body begin 00026A64
+	for (u32 i=0; i<KEY_KEY_CODES_COUNT; ++i)
+                        key_is_down_[i] = false;
+  // Bouml preserved body end 00026A64
+}
+
 bool GraphicEngine::CreateWindow() 
 {
   // Bouml preserved body begin 0001F464
@@ -195,5 +203,23 @@ irr::scene::ISceneNode* GraphicEngine::CreateCamera()
 
 	return node;
   // Bouml preserved body end 0001FBE4
+}
+
+bool GraphicEngine::OnEvent(const SEvent& event) 
+{
+  // Bouml preserved body begin 00026964
+	// Remember whether each key is down or up
+    if (event.EventType == irr::EET_KEY_INPUT_EVENT)
+            key_is_down_[event.KeyInput.Key] = event.KeyInput.PressedDown;
+
+    return false;
+  // Bouml preserved body end 00026964
+}
+
+bool GraphicEngine::IsKeyDown(irr::EKEY_CODE key_code) 
+{
+  // Bouml preserved body begin 000269E4
+	return key_is_down_[key_code];
+  // Bouml preserved body end 000269E4
 }
 

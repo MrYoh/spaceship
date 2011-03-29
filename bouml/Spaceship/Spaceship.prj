@@ -1,6 +1,6 @@
 format 76
 "Spaceship"
-  revision 2
+  revision 3
   modified_by 100 "Yoh"
   cpp_root_dir "D:/prog/projets/spaceship/fichiers/"
 
@@ -39,15 +39,15 @@ format 76
 
   mark_for_import
   
+  package_ref 128356 // global
+
+  package_ref 128612 // Game
+
   package_ref 128228 // sql
 
   package_ref 128100 // graphic
 
-  package_ref 128356 // global
-
   package_ref 128484 // physic
-
-  package_ref 128612 // Game
 preserve_bodies
 
 end

@@ -53,3 +53,10 @@ bool Game::UpdateFrame()
   // Bouml preserved body end 0001F8E4
 }
 
+bool Game::IsKeyDown(irr::EKEY_CODE key_is_down) 
+{
+  // Bouml preserved body begin 00026AE4
+	return GraphicEngine::GetInstance()->IsKeyDown(key_is_down);
+  // Bouml preserved body end 00026AE4
+}
+

@@ -14,6 +14,8 @@ class EntityManager;
 class GraphicEngine : public Singleton<GraphicEngine> 
 {
   public:
+    GraphicEngine();
+
     bool CreateWindow();
 
     bool CreateSetupWindow();
@@ -43,6 +45,16 @@ class GraphicEngine : public Singleton<GraphicEngine>
     f32 last_fps_;
 
     EntityManager * _;
+
+
+  public:
+    virtual bool OnEvent(const SEvent& event);
+
+    virtual bool IsKeyDown(irr::EKEY_CODE key_code);
+
+
+  private:
+    bool key_is_down_[KEY_KEY_CODES_COUNT];
 
 };
 inline  irr::IrrlichtDevice* GraphicEngine::device() 

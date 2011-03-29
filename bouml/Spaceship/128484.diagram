@@ -35,7 +35,7 @@ relationcanvas 128612 relation_ref 129380 // <directional aggregation>
 end
 relationcanvas 128740 relation_ref 129892 // <composition>
   from ref 128228 z 2012 to ref 128484
-  role_a_pos 357 526 3000 role_b_pos 357 506 3000
+  role_a_pos 357 526 3000 role_b_pos 357 522 3000
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 129252 relation_ref 130148 // <unidirectional association>
@@ -45,7 +45,7 @@ relationcanvas 129252 relation_ref 130148 // <unidirectional association>
   line 130020 z 2006 to point 177 681
   line 129380 z 2006 to point 176 477
   line 129508 z 2006 to ref 128228
-  role_a_pos 267 459 3000 no_role_b
+  role_a_pos 267 471 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 129636 relation_ref 130276 // <dependency>
@@ -88,7 +88,7 @@ relationcanvas 131044 relation_ref 131300 // <dependency>
 end
 relationcanvas 131300 relation_ref 145124 // <directional composition>
   from ref 128228 z 2006 to ref 131172
-  role_a_pos 415 400 3000 no_role_b
+  role_a_pos 415 402 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 131428 relation_ref 145252 // <unidirectional association>
