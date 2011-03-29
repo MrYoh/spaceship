@@ -1,0 +1,28 @@
+window_sizes 1342 986 297 1039 800 82
+diagrams
+  classdiagram_ref 128100 // graphic
+    554 693 100 4 0 0
+  classdiagram_ref 128228 // Global
+    1381 1020 100 0 92 157
+  classdiagram_ref 128356 // physic
+    662 693 100 4 0 0
+  active  classdiagram_ref 128484 // game
+    1039 830 100 4 180 0
+  classdiagram_ref 128612 // sql
+    1151 1006 100 4 0 0
+end
+show_stereotypes
+selected classview_ref 128612 // Game
+open
+  class_ref 128356 // SqlEngine
+  deploymentview_ref 128612 // sql
+  classview_ref 128100 // graphic
+  classview_ref 128356 // global
+  class_ref 128740 // PhysicEngine
+  class_ref 129252 // Game
+  class_ref 129124 // GameEntity
+  class_ref 128612 // EntityManager
+  class_ref 142564 // GameWorld
+end
+nocompletion
+end

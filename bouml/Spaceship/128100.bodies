@@ -1,0 +1,26 @@
+class GraphicEngine
+!!!128100.cpp!!!	CreateWindow() : bool
+
+	device_=createDevice(video::EDT_DIRECT3D9,
+				core::dimension2d<u32>(800,600),
+				32,
+				false,
+				false,
+				false,
+				0);
+
+
+	if (!device_)
+		return false; //Pb de génération du device
+
+
+	driver_=device_->getVideoDriver();
+	scene_manager_=device_->getSceneManager();
+	//guiEnv=device->getGUIEnvironment();
+
+	
+	return true;
+!!!128228.cpp!!!	CreateSetupWindow() : bool
+
+	//TODO: setupwindows
+	return true;

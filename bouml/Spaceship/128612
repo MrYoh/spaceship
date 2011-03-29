@@ -1,0 +1,614 @@
+format 76
+"Game" // Game
+  revision 3
+  modified_by 100 "Yoh"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default class_drawing_mode default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default show_stereotype_properties default
+  
+  classview 128612 "Game"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default class_drawing_mode default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    associated_deployment_view deploymentview_ref 128484 // Game
+    classdiagram 128484 "game"
+      draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+
+    class 129252 "Game"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} 
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 129380 "Game"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+	:game_world_(),
+	entity_manager_(this, &game_world_)
+{
+  ${body}}
+"
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent 
+	
+      end
+
+      operation 143076 "~Game"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 129124 "LoadLevel"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      operation 129252 "UpdateFrame"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
+      classrelation 130148 // graphic_engine (<directional aggregation>)
+	relation 129636 o-->
+	  a role_name "graphic_engine" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}_${value};
+"
+	    classrelation_ref 130148 // graphic_engine (<directional aggregation>)
+	  b parent class_ref 128100 // GraphicEngine
+      end
+
+      classrelation 130276 // physic_engine (<directional aggregation>)
+	relation 129764 o-->
+	  a role_name "physic_engine" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}_${value};
+"
+	    classrelation_ref 130276 // physic_engine (<directional aggregation>)
+	  b parent class_ref 128740 // PhysicEngine
+      end
+
+      classrelation 130404 // entity_manager (<composition>)
+	relation 129892 *---
+	  a role_name "entity_manager" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
+"
+	    classrelation_ref 130404 // entity_manager (<composition>)
+	  b role_name "game" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}_${value};
+"
+	    classrelation_ref 130660 // game (<composition>)
+      end
+
+      classrelation 131172 // <dependency>
+	relation 130276 -_->
+	  a default
+	    cpp default "#include in source"
+	    classrelation_ref 131172 // <dependency>
+	  b parent class_ref 129124 // GameEntity
+      end
+
+      classrelation 131428 // <dependency>
+	relation 130532 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 131428 // <dependency>
+	  b parent class_ref 128868 // irrlicht
+      end
+
+      classrelation 132196 // <dependency>
+	relation 131300 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 132196 // <dependency>
+	  b parent class_ref 129380 // irrBullet
+      end
+
+      classrelation 146020 // game_world (<directional composition>)
+	relation 145124 *-->
+	  a role_name "game_world" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
+"
+	    classrelation_ref 146020 // game_world (<directional composition>)
+	  b parent class_ref 142564 // GameWorld
+      end
+    end
+
+    class 129124 "GameEntity"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} 
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 131044 // game (<unidirectional association>)
+	relation 130148 --->
+	  a role_name "game" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}_${value};
+"
+	    classrelation_ref 131044 // game (<unidirectional association>)
+	  b parent class_ref 129252 // Game
+	set_oper operation_ref 144356 // set_game
+      end
+
+      classrelation 131684 // <dependency>
+	relation 130788 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 131684 // <dependency>
+	  b parent class_ref 128868 // irrlicht
+      end
+
+      classrelation 131940 // <dependency>
+	relation 131044 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 131940 // <dependency>
+	  b parent class_ref 129380 // irrBullet
+      end
+
+      attribute 129764 "node"
+	private explicit_type "irr::scene::ISceneNode*"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	set_oper operation_ref 143972 // set_node
+      end
+
+      attribute 129892 "body"
+	private explicit_type "IRigidBody*"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	get_oper operation_ref 144100 // body
+	set_oper operation_ref 144228 // set_body
+      end
+
+      operation 143972 "set_node"
+	force_body_gen public explicit_return_type "void"
+	nparams 1
+	  param in name "value" explicit_type "irr::scene::ISceneNode*"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+  node_ = ${p0};
+}
+"
+	cpp_name_spec "set_${name}"
+	
+	java_name_spec "set${Name}"
+	
+	php_name_spec "set${Name}"
+	
+	python_name_spec "set${Name}"
+	
+	idl_name_spec "set_${name}"
+	set_of_attribute attribute_ref 129764 // node
+      end
+
+      operation 144228 "set_body"
+	force_body_gen public explicit_return_type "void"
+	nparams 1
+	  param in name "value" explicit_type "IRigidBody*"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+  body_ = ${p0};
+}
+"
+	cpp_name_spec "set_${name}"
+	
+	java_name_spec "set${Name}"
+	
+	php_name_spec "set${Name}"
+	
+	python_name_spec "set${Name}"
+	
+	idl_name_spec "set_${name}"
+	set_of_attribute attribute_ref 129892 // body
+      end
+
+      operation 144356 "set_game"
+	force_body_gen public explicit_return_type "void"
+	nparams 1
+	  param in name "value" type class_ref 129252 // Game
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+  game_ = ${p0};
+}
+"
+	cpp_name_spec "set_${name}"
+	
+	java_name_spec "set${Name}"
+	
+	php_name_spec "set${Name}"
+	
+	python_name_spec "set${Name}"
+	
+	idl_name_spec "set_${name}"
+	set_of_relation classrelation_ref 131044 // game (<unidirectional association>)
+      end
+
+      classrelation 146532 // game_world (<association>)
+	relation_ref 145380 // <association>
+      end
+    end
+
+    class 128612 "EntityManager"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} 
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 143716 "EntityManager"
+	preserve_cpp_body_indent public explicit_return_type ""
+	nparams 2
+	  param in name "game" explicit_type "Game*"
+	  param in name "game_world" explicit_type "GameWorld*"
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${volatile}${throw} 
+	:game_(game),
+	game_world_(game_world)
+	
+{
+  ${body}}
+"
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent 
+	
+      end
+
+      operation 128996 "CreateGameEntity"
+	preserve_cpp_body_indent public explicit_return_type "shared_ptr<GameEntity>"
+	nparams 2
+	  param in name "name" explicit_type "irr::core::stringc"
+	  param in name "position" explicit_type "irr::core::vector3df&"
+	    defaultvalue "irr::core::vector3df(0,0,0)"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${v0}, ${t1} ${p1}${v1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent 
+	
+      end
+
+      operation 143332 "RemoveGameEntity"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 1
+	  param in name "game_entity" explicit_type "shared_ptr<GameEntity>"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent 
+	
+      end
+
+      operation 143460 "RemoveAll"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent 
+	
+      end
+
+      classrelation 128612 // graphic_engine (<aggregation>)
+	relation 128484 o---
+	  a role_name "graphic_engine" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}_${value};
+"
+	    classrelation_ref 128612 // graphic_engine (<aggregation>)
+	  b role_name "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}_${value};
+"
+	    classrelation_ref 128740 // <aggregation>
+      end
+
+      classrelation 129508 // physic_engine (<directional aggregation>)
+	relation 129252 o-->
+	  a role_name "physic_engine" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}_${value};
+"
+	    classrelation_ref 129508 // physic_engine (<directional aggregation>)
+	  b parent class_ref 128740 // PhysicEngine
+      end
+
+      classrelation 129764 // game_entities (<directional aggregation>)
+	relation 129380 o-->
+	  stereotype "vector"
+	  a role_name "game_entities" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${stereotype}<shared_ptr<${type} > > ${name}_${value};
+"
+	    classrelation_ref 129764 // game_entities (<directional aggregation>)
+	  b parent class_ref 129124 // GameEntity
+      end
+
+      classrelation 130660 // game (<composition>)
+	relation_ref 129892 // <composition>
+      end
+
+      classrelation 131556 // <dependency>
+	relation 130660 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 131556 // <dependency>
+	  b parent class_ref 128868 // irrlicht
+      end
+
+      classrelation 132068 // <dependency>
+	relation 131172 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 132068 // <dependency>
+	  b parent class_ref 129380 // irrBullet
+      end
+
+      classrelation 146276 // game_world (<unidirectional association>)
+	relation 145252 --->
+	  a role_name "game_world" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}_${value};
+"
+	    classrelation_ref 146276 // game_world (<unidirectional association>)
+	  b parent class_ref 142564 // GameWorld
+      end
+    end
+
+    class 142564 "GameWorld"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} 
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 143844 "addGameEntity"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "game_entity" explicit_type "shared_ptr<GameEntity>"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${v0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent 
+	
+      end
+
+      classrelation 146404 // game_entities (<association>)
+	relation 145380 ----
+	  stereotype "vector"
+	  a role_name "game_entities" multiplicity "*" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${stereotype}<shared_ptr<${type} > > ${name}_${value};
+
+"
+	    classrelation_ref 146404 // game_entities (<association>)
+	  b role_name "game_world" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}_${value};
+"
+	    classrelation_ref 146532 // game_world (<association>)
+      end
+    end
+  end
+
+  deploymentview 128484 "Game"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+    artifact 128484 "Game"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 129252 // Game
+      end
+    end
+
+    artifact 128612 "GameEntity"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 129124 // GameEntity
+      end
+    end
+
+    artifact 128740 "EntityManager"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128612 // EntityManager
+      end
+    end
+
+    artifact 135396 "GameWorld"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 142564 // GameWorld
+      end
+    end
+  end
+end

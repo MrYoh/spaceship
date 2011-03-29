@@ -1,0 +1,107 @@
+format 76
+
+packagecanvas 128100 
+  package_ref 128612 // Game
+   color green  xyzwh 239 293 2000 373 449
+end
+classcanvas 128228 class_ref 129252 // Game
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  xyz 304 403 2005
+end
+classcanvas 128356 class_ref 129124 // GameEntity
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  xyz 308 675 2005
+end
+classcanvas 128484 class_ref 128612 // EntityManager
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  xyz 294 545 2011
+end
+classcanvas 130148 class_ref 128868 // irrlicht
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  xyz 747 502 2000
+end
+classcanvas 130660 class_ref 129380 // irrBullet
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  xyz 746 661 2000
+end
+classcanvas 131172 class_ref 142564 // GameWorld
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  xyz 486 387 2005
+end
+relationcanvas 128612 relation_ref 129380 // <directional aggregation>
+  from ref 128484 z 2012 stereotype "<<vector>>" xyz 319 657 2012 to ref 128356
+  role_a_pos 356 656 3000 no_role_b
+  multiplicity_a_pos 332 656 3000 no_multiplicity_b
+end
+relationcanvas 128740 relation_ref 129892 // <composition>
+  from ref 128228 z 2012 to ref 128484
+  role_a_pos 357 526 3000 role_b_pos 357 506 3000
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129252 relation_ref 130148 // <unidirectional association>
+  decenter_begin 230
+  decenter_end 768
+  from ref 128356 z 2006 to point 286 680
+  line 130020 z 2006 to point 177 681
+  line 129380 z 2006 to point 176 477
+  line 129508 z 2006 to ref 128228
+  role_a_pos 267 459 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129636 relation_ref 130276 // <dependency>
+  decenter_end 689
+  from ref 128228 z 2006 to point 122 427
+  line 129764 z 2006 to point 133 723
+  line 129892 z 2006 to ref 128356
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130276 relation_ref 130532 // <dependency>
+  from ref 128228 z 2006 to ref 130148
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130404 relation_ref 130660 // <dependency>
+  from ref 128484 z 2012 to ref 130148
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130532 relation_ref 130788 // <dependency>
+  from ref 128356 z 2006 to ref 130148
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130788 relation_ref 131044 // <dependency>
+  from ref 128356 z 2006 to ref 130660
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 130916 relation_ref 131172 // <dependency>
+  from ref 128484 z 2012 to ref 130660
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131044 relation_ref 131300 // <dependency>
+  from ref 128228 z 2006 to ref 130660
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131300 relation_ref 145124 // <directional composition>
+  from ref 128228 z 2006 to ref 131172
+  role_a_pos 415 400 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131428 relation_ref 145252 // <unidirectional association>
+  from ref 128484 z 2012 to ref 131172
+  role_a_pos 435 407 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 131556 relation_ref 145380 // <association>
+  from ref 131172 z 2006 stereotype "<<vector>>" xyz 508 576 3000 to point 537 715
+  line 131684 z 2006 to point 538 718
+  line 131812 z 2006 to point 536 718
+  line 131940 z 2006 to ref 128356
+  role_a_pos 392 708 3000 role_b_pos 542 442 3000
+  multiplicity_a_pos 392 733 3000 no_multiplicity_b
+end
+end
