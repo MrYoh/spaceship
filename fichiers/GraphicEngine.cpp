@@ -158,26 +158,6 @@ bool GraphicEngine::UpdateFrame()
 
 
 
-//////////////////TEST
-using namespace scene;
-using namespace core;
-using namespace video;
-
-
-
-
-
-
-
-
-
-		//////////////////
-
-
-
-
-
-
 
 			driver_->endScene();
 

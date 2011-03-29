@@ -62,7 +62,7 @@ ${inlines}
       explicit_switch_type ""
       
       attribute 128868 "type"
-	private explicit_type "u32"
+	public explicit_type "u32"
 	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
 "
 	java_decl ""
@@ -72,7 +72,7 @@ ${inlines}
       end
 
       attribute 128996 "string_data"
-	private explicit_type "irr::core::stringc, irr::core::stringc"
+	public explicit_type "irr::core::stringc, irr::core::stringc"
 	multiplicity "*"
 	stereotype "map"
 	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${stereotype}<${type}> ${name}_${value};
@@ -84,7 +84,7 @@ ${inlines}
       end
 
       attribute 129124 "s32_data"
-	private explicit_type "irr::core::stringc, s32"
+	public explicit_type "irr::core::stringc, s32"
 	multiplicity "*"
 	stereotype "map"
 	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${stereotype}<${type}> ${name}_${value};
@@ -96,7 +96,7 @@ ${inlines}
       end
 
       attribute 129252 "u32_data"
-	private explicit_type "irr::core::stringc, u32"
+	public explicit_type "irr::core::stringc, u32"
 	multiplicity "*"
 	stereotype "map"
 	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${stereotype}<${type}> ${name}_${value};
@@ -108,7 +108,7 @@ ${inlines}
       end
 
       attribute 129380 "f32_data"
-	private explicit_type "irr::core::stringc, f32"
+	public explicit_type "irr::core::stringc, f32"
 	multiplicity "*"
 	stereotype "map"
 	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${stereotype}<${type}> ${name}_${value};
@@ -120,7 +120,7 @@ ${inlines}
       end
 
       attribute 129508 "vector3df_data"
-	private explicit_type "irr::core::stringc, irr::core::vector3df"
+	public explicit_type "irr::core::stringc, irr::core::vector3df"
 	multiplicity "*"
 	stereotype "map"
 	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${stereotype}<${type}> ${name}_${value};

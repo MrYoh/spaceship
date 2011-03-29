@@ -37,5 +37,9 @@ class SqlEngine : public Singleton<SqlEngine>
 
     void Test(irr::core::stringc requete);
 
+
+  private:
+    bool is_setup_ok_;
+
 };
 #endif

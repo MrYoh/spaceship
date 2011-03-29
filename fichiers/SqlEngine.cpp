@@ -4,7 +4,7 @@
 SqlEngine::SqlEngine() 
 {
   // Bouml preserved body begin 00021564
-	rc_=1;
+	is_setup_ok_=false;;
   // Bouml preserved body end 00021564
 }
 
@@ -18,17 +18,41 @@ SqlEngine::~SqlEngine()
 EngineEvent& SqlEngine::GetNodeData(irr::core::stringc name) 
 {
   // Bouml preserved body begin 00024D64
-	
-	if(rc_)
-	{
-		Initialize();
-	}
-	
 	typedef irr::core::vector3df Vector3df;
 	typedef irr::core::stringc Stringc;
 	typedef std::pair<Stringc, Vector3df> PairVector3df;
 	typedef std::pair<Stringc, Stringc> PairStringc;
 
+
+	if(!is_setup_ok_)
+	{
+		Initialize();
+	}
+	
+
+	//la requete
+	irr::core::stringc requete;
+	requete  = "select MESH, TEXTURE from T_NODE where NAME = '";
+	requete += name.c_str();
+	requete += "';";
+
+		
+	sqlite3_stmt* prepared_statement = Execute(requete);
+	
+		// On boucle tant que l'on trouve des objets dans la BDD
+		while(sqlite3_step(prepared_statement) == SQLITE_ROW)
+		{
+			//on recupere les resultats de la colonne coresspondante 
+			Stringc mesh = (char *)sqlite3_column_text(prepared_statement, 0);
+			engine_event_.string_data_.insert(PairStringc("mesh",mesh));
+
+			Stringc texture = (char *)sqlite3_column_text(prepared_statement, 1);
+			engine_event_.string_data_.insert(PairStringc("texture",texture));
+				
+			//irr::core::stringc a (lol.c_str());//std::cout << lol;
+ 		}
+		sqlite3_finalize(prepared_statement);
+	/*
 	irr::u32 type(0);
 	engine_event_.type_ = type;
 	
@@ -45,7 +69,7 @@ EngineEvent& SqlEngine::GetNodeData(irr::core::stringc name)
 	engine_event_.string_data_.insert(PairStringc("mesh",mesh));
 
 	Stringc texture("sydney.bmp");
-	engine_event_.string_data_.insert(PairStringc("texture",texture));
+	engine_event_.string_data_.insert(PairStringc("texture",texture));*/
 
 		
 	return engine_event_;
@@ -78,10 +102,10 @@ bool SqlEngine::Initialize()
 sqlite3_stmt* SqlEngine::Execute(irr::core::stringc requete) 
 {
   // Bouml preserved body begin 00024EE4
-	if(!rc_)
+	if(!is_setup_ok_)
 		Initialize();
 	
-	if(rc_)
+	if(!rc_)
 	{
 		sqlite3_stmt* prepared_statement;
 		if(sqlite3_prepare_v2(data_base_, requete.c_str(), -1, &prepared_statement, NULL) == SQLITE_OK)
@@ -98,12 +122,12 @@ void SqlEngine::Test(irr::core::stringc requete)
   // Bouml preserved body begin 00024F64
 
 	
-	irr::core::stringc  a = "select ID_NODE as ID from T_NODE;";
+	//irr::core::stringc  a = "select ID_NODE as ID from T_NODE;";
 
 	if(!rc_)
 	{
 		sqlite3_stmt *prepared_statement;
-		if(sqlite3_prepare_v2(data_base_, a.c_str(), -1, &prepared_statement, NULL) == SQLITE_OK)
+		if(sqlite3_prepare_v2(data_base_, requete.c_str(), -1, &prepared_statement, NULL) == SQLITE_OK)
 		{
 			// On boucle tant que l'on trouve des objets dans la BDD
 			while(sqlite3_step(prepared_statement) == SQLITE_ROW)

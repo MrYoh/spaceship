@@ -79,10 +79,25 @@ ${inlines}
 	
       end
 
+      operation 151524 "~SqlEngine"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+  ${body}}
+"
+	
+	
+	
+	
+      end
+
       operation 150884 "GetNodeData"
 	preserve_cpp_body_indent public explicit_return_type "EngineEvent&"
 	nparams 1
-	  param in name "name" explicit_type "irr::core::strinc"
+	  param in name "name" explicit_type "irr::core::stringc"
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
 "
 	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
@@ -130,13 +145,22 @@ ${inlines}
       end
 
       attribute 136804 "rc"
-	private explicit_type "int"
+	private explicit_type "irr::u32"
 	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
 "
 	java_decl ""
 	php_decl ""
 	python_decl ""
 	idl_decl ""
+      end
+
+      classrelation 153060 // engine_event (<directional composition>)
+	relation 151908 *-->
+	  a role_name "engine_event" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
+"
+	    classrelation_ref 153060 // engine_event (<directional composition>)
+	  b parent class_ref 128484 // EngineEvent
       end
 
       classrelation 139492 // <dependency>
@@ -147,13 +171,69 @@ ${inlines}
 	  b parent class_ref 136036 // sqlite3
       end
 
-      classrelation 153060 // engine_event (<directional composition>)
-	relation 151908 *-->
-	  a role_name "engine_event" private
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
+      classrelation 153316 // <dependency>
+	relation 152036 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 153316 // <dependency>
+	  b parent class_ref 128868 // irrlicht
+      end
+
+      operation 151140 "Initialize"
+	preserve_cpp_body_indent public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
-	    classrelation_ref 153060 // engine_event (<directional composition>)
-	  b parent class_ref 128484 // EngineEvent
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent 
+	
+      end
+
+      operation 151268 "Execute"
+	preserve_cpp_body_indent public explicit_return_type "sqlite3_stmt*"
+	nparams 1
+	  param in name "requete" explicit_type "irr::core::stringc"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent 
+	
+      end
+
+      operation 151396 "Test"
+	preserve_cpp_body_indent public explicit_return_type "void"
+	nparams 1
+	  param in name "requete" explicit_type "irr::core::stringc"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent 
+	
+      end
+
+      attribute 143460 "setup"
+	private explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}_${value};
+"
+	java_decl ""
+	php_decl ""
+	python_decl ""
+	idl_decl ""
       end
     end
 

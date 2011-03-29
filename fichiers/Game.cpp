@@ -40,9 +40,9 @@ bool Game::LoadLevel()
 bool Game::UpdateFrame() 
 {
   // Bouml preserved body begin 0001F8E4
-	entity_manager_.CreateGameEntity("kik", core::vector3df(0,0,0));
-	entity_manager_.CreateGameEntity("kik", core::vector3df(0,0,50));
-	entity_manager_.CreateGameEntity("kik", core::vector3df(50,0,0));
+	entity_manager_.CreateGameEntity("sydney", core::vector3df(0,0,0));
+	entity_manager_.CreateGameEntity("sydney", core::vector3df(0,0,50));
+	entity_manager_.CreateGameEntity("sydney", core::vector3df(50,0,0));
 	
 	while(graphic_engine_->UpdateFrame())
 	{

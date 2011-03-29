@@ -16,6 +16,10 @@ classcanvas 128740 class_ref 128484 // EngineEvent
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
   xyz 452 198 2000
 end
+classcanvas 128996 class_ref 128868 // irrlicht
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  xyz 615 296 2006
+end
 relationcanvas 128356 relation_ref 130404 // <generalisation>
   from ref 128100 z 2006 to ref 128228
   no_role_a no_role_b
@@ -28,7 +32,17 @@ relationcanvas 128612 relation_ref 138596 // <dependency>
 end
 relationcanvas 128868 relation_ref 151908 // <directional composition>
   from ref 128100 z 2001 to ref 128740
-  role_a_pos 466 333 3000 no_role_b
+  role_a_pos 470 333 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129124 relation_ref 131428 // <dependency>
+  from ref 128740 z 2007 to ref 128996
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 129252 relation_ref 152036 // <dependency>
+  from ref 128100 z 2007 to ref 128996
+  no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 end

@@ -26,7 +26,7 @@ shared_ptr<GameEntity> EntityManager::CreateGameEntity(irr::core::stringc name, 
 	game_entity->set_game(game_);
 	
 	//on cree le node et body 
-	irr::scene::ISceneNode* node = GraphicEngine::GetInstance()->CreateSceneNode("lol");
+	irr::scene::ISceneNode* node = GraphicEngine::GetInstance()->CreateSceneNode(name);
 
 	if (node)
 	{
