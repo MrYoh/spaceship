@@ -1,27 +1,26 @@
-window_sizes 1837 1178 297 1039 800 82
+window_sizes 1193 1178 301 886 800 82
 diagrams
-  classdiagram_ref 128100 // graphic
-    554 693 100 4 0 0
-  active  classdiagram_ref 128228 // Global
-    1534 1022 100 0 0 0
+  active  classdiagram_ref 128100 // graphic
+    886 1022 100 4 0 0
+  classdiagram_ref 128228 // Global
+    1534 1022 100 0 0 327
   classdiagram_ref 128356 // physic
     662 693 100 4 0 0
   classdiagram_ref 128484 // game
     1039 830 100 4 144 0
   classdiagram_ref 128612 // sql
     1151 1006 100 4 0 0
+  classdiagram_ref 135140 // spaceship
+    708 817 100 4 0 0
 end
 show_stereotypes
-selected classdiagram_ref 128228 // Global
+selected 
+  package_ref 129 // Spaceship
 open
-  class_ref 128356 // SqlEngine
-  deploymentview_ref 128612 // sql
-  class_ref 128100 // GraphicEngine
-  classview_ref 128356 // global
-  class_ref 129252 // Game
   class_ref 129124 // GameEntity
   class_ref 128612 // EntityManager
-  class_ref 142564 // GameWorld
+  class_ref 128100 // GraphicEngine
+  class_ref 149092 // PlayerShipEntity
 end
 nocompletion
 end

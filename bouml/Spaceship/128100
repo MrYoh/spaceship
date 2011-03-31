@@ -350,6 +350,25 @@ ${inlines}
 	python_decl ""
 	idl_decl ""
       end
+
+      classrelation 160356 // <generalisation>
+	relation 159076 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 160356 // <generalisation>
+	  b parent class_ref 149220 // IEventReceiver
+      end
+    end
+
+    class 149220 "IEventReceiver"
+      visibility package 
+      cpp_external cpp_decl "${name}"
+      java_decl ""
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
     end
   end
 

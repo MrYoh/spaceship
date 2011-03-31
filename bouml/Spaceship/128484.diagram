@@ -50,8 +50,8 @@ relationcanvas 129252 relation_ref 130148 // <unidirectional association>
 end
 relationcanvas 129636 relation_ref 130276 // <dependency>
   decenter_end 689
-  from ref 128228 z 2006 to point 122 427
-  line 129764 z 2006 to point 133 723
+  from ref 128228 z 2006 to point 122 457
+  line 129764 z 2006 to point 114 759
   line 129892 z 2006 to ref 128356
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b

@@ -202,6 +202,13 @@ ${inlines}
 	  b parent class_ref 142564 // GameWorld
       end
 
+      classrelation 160100 // <dependency>
+	relation 158820 -_->
+	  a default
+	    cpp default "#include in source"
+	    classrelation_ref 160100 // <dependency>
+	  b parent class_ref 149092 // PlayerShipEntity
+      end
     end
 
     class 129124 "GameEntity"
@@ -288,7 +295,7 @@ ${inlines}
 
       classrelation 131044 // game (<unidirectional association>)
 	relation 130148 --->
-	  a role_name "game" private
+	  a role_name "game" protected
 	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}_${value};
 "
 	    classrelation_ref 131044 // game (<unidirectional association>)
