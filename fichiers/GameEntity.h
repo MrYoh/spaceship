@@ -7,6 +7,7 @@
 using namespace irr;
 #include <irrBullet.h>
 
+#include "GraphicEngine.h"
 
 class Game;
 class GameWorld;

@@ -208,6 +208,59 @@ irr::scene::ISceneNode* GraphicEngine::CreateCamera()
   // Bouml preserved body end 0001FBE4
 }
 
+irr::core::vector3df GraphicEngine::CalculMousePositionY(f32 position_y) 
+{
+  // Bouml preserved body begin 00028664
+	using namespace irr;
+
+	using namespace core;
+	using namespace scene;
+	using namespace video;
+
+	using namespace io;
+	using namespace gui;
+	
+	ISceneCollisionManager* collisionManager = 
+		scene_manager_->getSceneCollisionManager();
+
+	ICursorControl *cursor = device_->getCursorControl();
+	core::position2d<s32> pos = cursor->getPosition();
+	core::vector3df point;
+  core::triangle3df triangle;
+
+  const ISceneNode *node = 0;
+  const core::line3d<f32> ray = collisionManager->getRayFromScreenCoordinates(pos);
+
+  vector3df ray_vector = ray.getVector();
+  
+  //distance camera avec point0
+  /*f32 y= 1;
+
+
+  f32 x = (y*ray_vector.X)/ray_vector.Y;
+  f32 z = (y*ray_vector.Z)/ray_vector.Y;*/
+
+  //distance
+  f32 y = -500;
+
+  f32 x = (y*ray_vector.X)/ray_vector.Y;
+  f32 z = (y*ray_vector.Z)/ray_vector.Y;
+  
+  //vector camera flemme de chercher la camera
+  vector3df camera(0,500,0);
+
+
+  
+  return (vector3df(x,y,z)+camera);
+  
+  
+  /*if (collisionManager->getCollisionPoint
+    (ray, selector, point, triangle, node))*/
+
+
+  // Bouml preserved body end 00028664
+}
+
 bool GraphicEngine::OnEvent(const SEvent& event) 
 {
   // Bouml preserved body begin 00026964

@@ -30,6 +30,8 @@ class GraphicEngine : public Singleton<GraphicEngine>, public IEventReceiver
 
     inline const f32 frame_delta_time() const;
 
+    irr::core::vector3df CalculMousePositionY(f32 position_y);
+
 
   private:
     irr::IrrlichtDevice* device_;
