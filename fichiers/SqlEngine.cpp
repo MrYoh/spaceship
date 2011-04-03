@@ -112,7 +112,7 @@ EngineEvent& SqlEngine::GetNodeData(irr::core::stringc name)
 	{
 		Stringc type = (char *)sqlite3_column_text(prepared_statement, 0);
 
-		if(type == "animatedmesh")
+		if(type == "animatedmesh" | type == "mesh")
 		{
 			//la requete
 			/*requete  = "select MESH, TEXTURE from T_ANIMATED_MESH INNER JOIN T_NODE ";

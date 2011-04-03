@@ -30,11 +30,14 @@ bool GraphicEngine::CreateWindow()
   
   
   	driver_=device_->getVideoDriver();
+	//TODO: a voir pour performance
+	driver_->setTextureCreationFlag(video::ETCF_ALWAYS_32_BIT, true);
+
   	scene_manager_=device_->getSceneManager();
 	
   	//guiEnv=device->getGUIEnvironment();
 
-	device_->getFileSystem()->addFolderFileArchive("./media/");
+	device_->getFileSystem()->addFolderFileArchive("./asset/");
   
 	device_->setEventReceiver(this);
 
@@ -251,7 +254,7 @@ irr::scene::ISceneNode* GraphicEngine::CreateModelNode(EngineEvent& node_data)
 		
 
 	//on cree le mesh
-	if(it_mesh!=it_string_end)
+	/*if(it_mesh!=it_string_end)
 	{
 		scene::IAnimatedMesh* mesh = scene_manager_->getMesh(it_mesh->second);
 		if(mesh)
@@ -271,11 +274,94 @@ irr::scene::ISceneNode* GraphicEngine::CreateModelNode(EngineEvent& node_data)
 				{
 					node->setMaterialTexture( 0, driver_->getTexture(it_texture_diffusal->second) );
 				}
+				
+				//On met en place la normal map pour le bumpmap
+				if(it_texture_normal!=it_string_end)
+				{
+					 video::ITexture* normalMap =
+                        driver->getTexture("it_texture_normal->second");
+
+					 if (normalMap)
+                        driver->makeNormalMapTexture(normalMap, 9.0f);
+					
+					node->setMaterialTexture( 1, driver_->getTexture(normalMap) );
+					node->setMaterialType(irr::video::EMT_PARALLAX_MAP_SOLID);
+				}
 				return node;	
 			}
 			
 		}
+	}*/
+
+
+	if(it_mesh!=it_string_end)
+	{
+		scene::IAnimatedMesh* mesh = scene_manager_->getMesh(it_mesh->second);
+		if(mesh)
+		{
+			
+			//scene::IAnimatedMeshSceneNode* node = 0;
+			
+			//On met en place la normal map pour le bumpmap
+			if(it_texture_normal != it_string_end)
+			{
+				if(it_texture_normal->second != "")
+				{
+					//TODO a enlever
+					scene_manager_->getMeshManipulator()->makePlanarTextureMapping(
+                                mesh->getMesh(0), 0.003f);
+					
+					irr::video::ITexture* normalMap = driver_->getTexture(it_texture_normal->second);
+					//TODO texture
+
+					if (normalMap)
+						driver_->makeNormalMapTexture(normalMap, 9.0f);
+
+					irr::scene::IMesh* tangent_mesh = 
+						scene_manager_->getMeshManipulator()->createMeshWithTangents(mesh->getMesh(0));
+					
+					scene::ISceneNode* node = scene_manager_->addMeshSceneNode(tangent_mesh);
+										
+					
+					node->setMaterialTexture( 1,normalMap);
+					node->setMaterialType(irr::video::EMT_PARALLAX_MAP_SOLID);
+
+
+					if(it_texture_diffusal!=it_string_end)
+					{
+						node->setMaterialTexture( 0, driver_->getTexture(it_texture_diffusal->second) );
+					}
+
+					node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+					node->setMaterialFlag(irr::video::EMF_WIREFRAME, false);
+
+					//TODO a enlever
+					//node->setScale(irr::core::vector3df(100,100,100));
+
+					
+
+
+				}else 
+				{
+					scene::IAnimatedMeshSceneNode* node = scene_manager_->addAnimatedMeshSceneNode(mesh);
+				
+					node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+					node->setMaterialFlag(irr::video::EMF_WIREFRAME, false);
+					//node->setMD2Animation(irr::scene::EMAT_STAND);
+					
+
+					if(it_texture_diffusal!=it_string_end)
+					{
+						node->setMaterialTexture( 0, driver_->getTexture(it_texture_diffusal->second) );
+					}
+					return node;	
+				}
+			
+			
+			}
+		}
 	}
+	
 
 	return 0;
 
