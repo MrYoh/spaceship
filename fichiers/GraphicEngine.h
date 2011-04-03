@@ -58,6 +58,14 @@ class GraphicEngine : public Singleton<GraphicEngine>, public IEventReceiver
   private:
     bool key_is_down_[KEY_KEY_CODES_COUNT];
 
+    irr::scene::ISceneNode* CreateModelNode(EngineEvent& node_data);
+
+
+  public:
+    irr::scene::ISceneNode* CreateLightNode(EngineEvent& node_data);
+
+    irr::scene::ISceneNode* CreateBillboardNode(EngineEvent& node_data);
+
 };
 inline  irr::IrrlichtDevice* GraphicEngine::device() 
 {

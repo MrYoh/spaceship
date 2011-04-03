@@ -58,78 +58,23 @@ irr::scene::ISceneNode* GraphicEngine::CreateSceneNode(irr::core::stringc name, 
   // Bouml preserved body begin 0001F5E4
 	//TODO: create scene node
 
-	bool is_mesh(false), is_node(false);
+	/*bool is_mesh(false), is_node(false);
 	
-	bool is_position(false), is_scale(false), is_rotation(false);
+	bool is_position(false), is_scale(false), is_rotation(false);*/
 
 
 	//on recupere les données de la base SQL
 	SqlEngine sql;
 	EngineEvent node_data = sql.GetNodeData(name);
 
-	//typedef
-	typedef irr::core::vector3df Vector3df;
-	typedef irr::core::stringc Stringc;
-
-	//on cherche
-	//dans les vector3df
-	std::map<Stringc, Vector3df>::const_iterator
-		it_vector3df_end(node_data.vector3df_data_.end()),
-		it_position(node_data.vector3df_data_.find("position")),
-		it_scale(node_data.vector3df_data_.find("scale")),
-		it_rotation(node_data.vector3df_data_.find("rotation"));
-		
-
-	//dans les stringc
-	std::map<Stringc, Stringc>::const_iterator
-		it_string_end(node_data.string_data_.end()),
-		it_mesh(node_data.string_data_.find("mesh")),
-		it_texture(node_data.string_data_.find("texture"));
-		
-
-	//on cree le mesh
-	if(it_mesh!=it_string_end)
+	irr::scene::ISceneNode* node = CreateModelNode(node_data);
+	if(node)
 	{
-		scene::IAnimatedMesh* mesh = scene_manager_->getMesh(it_mesh->second);
-		if(mesh)
-		{
-			is_mesh=true;
-			//on cree le node
-			if(is_mesh)
-			{
-				scene::IAnimatedMeshSceneNode* node = scene_manager_->addAnimatedMeshSceneNode(mesh);
-
-				if (node)
-				{
-					node->setID(id);
-			
-					node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
-					//node->setMaterialFlag(irr::video::EMF_WIREFRAME, false);
-					node->setMD2Animation(irr::scene::EMAT_STAND);
-
-					if(it_texture!=it_string_end)
-					{
-						node->setMaterialTexture( 0, driver_->getTexture(it_texture->second) );
-					}
-					return node;	
-				}
-			}
-		}
+		node->setID(id);
+		node->setPosition(position);
+		return node;
 	}
-			
-
-		/*//irr::scene::IAnimatedMesh* mesh = sceneManager->getMesh(pathModele.c_str());
-		scene::IAnimatedMesh* mesh = scene_manager_->getMesh("./media/sydney.md2");
-			if (!mesh)
-			{
-				//TODO si on ne trouve pas le mesh   
-				//device->drop();
-					//return 1;
-			}*/
-
-
-	
-	
+		
 	return 0;
 
   // Bouml preserved body end 0001F5E4
@@ -279,5 +224,79 @@ bool GraphicEngine::IsKeyDown(irr::EKEY_CODE key_code)
   // Bouml preserved body begin 000269E4
 	return key_is_down_[key_code];
   // Bouml preserved body end 000269E4
+}
+
+irr::scene::ISceneNode* GraphicEngine::CreateModelNode(EngineEvent& node_data) 
+{
+  // Bouml preserved body begin 00029FE4
+	//typedef
+	typedef irr::core::vector3df Vector3df;
+	typedef irr::core::stringc Stringc;
+
+	//on cherche
+	//dans les vector3df
+	std::map<Stringc, Vector3df>::const_iterator
+		it_vector3df_end(node_data.vector3df_data_.end()),
+		it_position(node_data.vector3df_data_.find("position")),
+		it_scale(node_data.vector3df_data_.find("scale")),
+		it_rotation(node_data.vector3df_data_.find("rotation"));
+		
+
+	//dans les stringc
+	std::map<Stringc, Stringc>::const_iterator
+		it_string_end(node_data.string_data_.end()),
+		it_mesh(node_data.string_data_.find("mesh")),
+		it_texture(node_data.string_data_.find("texture"));
+		
+
+	//on cree le mesh
+	if(it_mesh!=it_string_end)
+	{
+		scene::IAnimatedMesh* mesh = scene_manager_->getMesh(it_mesh->second);
+		if(mesh)
+		{
+			
+			scene::IAnimatedMeshSceneNode* node = scene_manager_->addAnimatedMeshSceneNode(mesh);
+
+			if (node)
+			{
+					
+			
+				node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+				//node->setMaterialFlag(irr::video::EMF_WIREFRAME, false);
+				node->setMD2Animation(irr::scene::EMAT_STAND);
+
+				if(it_texture!=it_string_end)
+				{
+					node->setMaterialTexture( 0, driver_->getTexture(it_texture->second) );
+				}
+				return node;	
+			}
+			
+		}
+	}
+
+	return 0;
+
+
+  // Bouml preserved body end 00029FE4
+}
+
+irr::scene::ISceneNode* GraphicEngine::CreateLightNode(EngineEvent& node_data) 
+{
+  // Bouml preserved body begin 0002A064
+
+
+	return 0;
+  // Bouml preserved body end 0002A064
+}
+
+irr::scene::ISceneNode* GraphicEngine::CreateBillboardNode(EngineEvent& node_data) 
+{
+  // Bouml preserved body begin 0002A0E4
+
+
+	return 0;
+  // Bouml preserved body end 0002A0E4
 }
 
