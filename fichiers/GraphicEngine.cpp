@@ -246,7 +246,8 @@ irr::scene::ISceneNode* GraphicEngine::CreateModelNode(EngineEvent& node_data)
 	std::map<Stringc, Stringc>::const_iterator
 		it_string_end(node_data.string_data_.end()),
 		it_mesh(node_data.string_data_.find("mesh")),
-		it_texture(node_data.string_data_.find("texture"));
+		it_texture_diffusal(node_data.string_data_.find("texture_diffusal")),
+		it_texture_normal(node_data.string_data_.find("texture_normal"));
 		
 
 	//on cree le mesh
@@ -266,9 +267,9 @@ irr::scene::ISceneNode* GraphicEngine::CreateModelNode(EngineEvent& node_data)
 				//node->setMaterialFlag(irr::video::EMF_WIREFRAME, false);
 				node->setMD2Animation(irr::scene::EMAT_STAND);
 
-				if(it_texture!=it_string_end)
+				if(it_texture_diffusal!=it_string_end)
 				{
-					node->setMaterialTexture( 0, driver_->getTexture(it_texture->second) );
+					node->setMaterialTexture( 0, driver_->getTexture(it_texture_diffusal->second) );
 				}
 				return node;	
 			}

@@ -115,26 +115,33 @@ EngineEvent& SqlEngine::GetNodeData(irr::core::stringc name)
 		if(type == "animatedmesh")
 		{
 			//la requete
-			requete  = "select MESH, TEXTURE from T_ANIMATED_MESH INNER JOIN T_NODE ";
+			/*requete  = "select MESH, TEXTURE from T_ANIMATED_MESH INNER JOIN T_NODE ";
 			requete += "ON T_ANIMATED_MESH.ID_NODE = T_NODE.ID_NODE where NAME = '";
 			requete += name.c_str();
+			requete += "';";*/
+			
+			requete  = "select * from v_model where name = '";
+			requete += name.c_str();
 			requete += "';";
-			
-			
+
+
 			prepared_statement = Execute(requete);
 	
 			// On boucle tant que l'on trouve des objets dans la BDD
 			if(sqlite3_step(prepared_statement) == SQLITE_ROW)
 			{
 				//on recupere les resultats de la colonne coresspondante 
-				Stringc mesh = (char *)sqlite3_column_text(prepared_statement, 0);
+				Stringc mesh = (char *)sqlite3_column_text(prepared_statement, 1);
 				engine_event_.string_data_.insert(PairStringc("mesh",mesh));
 
-				Stringc texture = (char *)sqlite3_column_text(prepared_statement, 1);
-				engine_event_.string_data_.insert(PairStringc("texture",texture));
+				Stringc texture_diffusal = (char *)sqlite3_column_text(prepared_statement, 2);
+				engine_event_.string_data_.insert(PairStringc("texture_diffusal",texture_diffusal));
+
+				Stringc texture_normal = (char *)sqlite3_column_text(prepared_statement, 3);
+				engine_event_.string_data_.insert(PairStringc("texture_normal",texture_normal));
  			}
 		}
-		else if (type == "node")
+		else if (type == "mesh")
 		{
 
 		}
