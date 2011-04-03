@@ -1,6 +1,6 @@
 format 76
 "graphic" // graphic
-  revision 4
+  revision 5
   modified_by 100 "Yoh"
   // class settings
   //class diagram settings
@@ -201,6 +201,22 @@ ${inlines}
 	
 	idl_name_spec "get_${name}"
 	get_of_attribute attribute_ref 128612 // frame_delta_time
+      end
+
+      operation 165476 "CalculMousePositionY"
+	preserve_cpp_body_indent public explicit_return_type "irr::core::vector3df"
+	nparams 1
+	  param in name "position_y" explicit_type "f32"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	preserve_java_body_indent 
+	preserve_php_body_indent 
+	preserve_python_body_indent 
+	
       end
 
       attribute 128100 "device"

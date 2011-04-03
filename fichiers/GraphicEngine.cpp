@@ -182,7 +182,7 @@ bool GraphicEngine::UpdateFrame()
                     //str += fps;.
 					str += frame_delta_time_;
 
-                    device_->setWindowCaption(str.c_str());
+                    //device_->setWindowCaption(str.c_str());
                     last_fps_ = fps;
             }
 		}

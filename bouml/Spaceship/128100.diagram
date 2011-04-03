@@ -75,8 +75,8 @@ relationcanvas 130020 relation_ref 152036 // <dependency>
 end
 relationcanvas 130276 relation_ref 159076 // <generalisation>
   geometry VHV
-  from ref 128100 z 2001 to point 348 737
-  line 130916 z 2001 to point 348 737
+  from ref 128100 z 2001 to point 348 745
+  line 130916 z 2001 to point 348 745
   line 131044 z 2001 to ref 130148
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b

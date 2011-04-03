@@ -7,7 +7,7 @@ diagrams
   classdiagram_ref 128356 // physic
     662 693 100 4 0 0
   classdiagram_ref 128484 // game
-    1039 830 100 4 144 0
+    1039 830 100 4 265 0
   classdiagram_ref 128612 // sql
     1151 1006 100 4 0 0
   classdiagram_ref 135140 // spaceship
@@ -17,8 +17,6 @@ show_stereotypes
 selected 
   package_ref 129 // Spaceship
 open
-  class_ref 129124 // GameEntity
-  class_ref 128612 // EntityManager
   class_ref 128100 // GraphicEngine
   class_ref 149092 // PlayerShipEntity
 end

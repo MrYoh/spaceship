@@ -1,6 +1,6 @@
 format 76
 "Game" // Game
-  revision 5
+  revision 6
   modified_by 100 "Yoh"
   // class settings
   //class diagram settings
@@ -358,6 +358,14 @@ ${inlines}
 	preserve_php_body_indent 
 	preserve_python_body_indent 
 	
+      end
+
+      classrelation 166884 // <dependency>
+	relation 165604 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 166884 // <dependency>
+	  b parent class_ref 128100 // GraphicEngine
       end
     end
 

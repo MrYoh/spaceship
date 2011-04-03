@@ -28,8 +28,12 @@ classcanvas 131172 class_ref 142564 // GameWorld
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
   xyz 486 387 2005
 end
+classcanvas 132068 class_ref 128100 // GraphicEngine
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  xyz 581 881 3005
+end
 relationcanvas 128612 relation_ref 129380 // <directional aggregation>
-  from ref 128484 z 2012 stereotype "<<vector>>" xyz 322.5 657 2012 to ref 128356
+  from ref 128484 z 2012 stereotype "<<vector>>" xyz 322 657 2012 to ref 128356
   role_a_pos 360 656 3000 no_role_b
   multiplicity_a_pos 336 656 3000 no_multiplicity_b
 end
@@ -103,5 +107,25 @@ relationcanvas 131556 relation_ref 145380 // <association>
   line 131940 z 2006 to ref 128356
   role_a_pos 402 714 3000 role_b_pos 542 458 3000
   multiplicity_a_pos 402 739 3000 no_multiplicity_b
+end
+relationcanvas 132196 relation_ref 128868 // <dependency>
+  from ref 132068 z 3006 to ref 130148
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132324 relation_ref 129636 // <directional aggregation>
+  from ref 128228 z 3006 to ref 132068
+  role_a_pos 587 898 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132452 relation_ref 128484 // <aggregation>
+  from ref 128484 z 3006 to ref 132068
+  role_a_pos 586 923 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+relationcanvas 132580 relation_ref 165604 // <dependency>
+  from ref 128356 z 3006 to ref 132068
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
 end
 end
