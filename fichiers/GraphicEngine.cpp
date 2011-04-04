@@ -61,21 +61,36 @@ irr::scene::ISceneNode* GraphicEngine::CreateSceneNode(irr::core::stringc name, 
   // Bouml preserved body begin 0001F5E4
 	//TODO: create scene node
 
-	/*bool is_mesh(false), is_node(false);
-	
-	bool is_position(false), is_scale(false), is_rotation(false);*/
-
-
 	//on recupere les données de la base SQL
 	SqlEngine sql;
 	EngineEvent node_data = sql.GetNodeData(name);
 
-	irr::scene::ISceneNode* node = CreateModelNode(node_data);
-	if(node)
+
+	//On recupere le typde de node
+
+	std::map<irr::core::stringc, irr::core::stringc>::const_iterator
+		it_string_end(node_data.string_data_.end()),
+		it_type_node(node_data.string_data_.find("type_node"));
+
+	if(it_type_node != it_string_end)
 	{
-		node->setID(id);
-		node->setPosition(position);
-		return node;
+		irr::scene::ISceneNode* node = 0;
+
+		if(it_type_node->second == "light")
+		{
+			node = CreateLightNode(node_data);
+		}
+		else if (it_type_node->second == "mesh" | it_type_node->second == "animatedmesh")
+			node = CreateModelNode(node_data);
+		
+	
+	
+		if(node)
+		{
+			node->setID(id);
+			node->setPosition(position);
+			return node;
+		}
 	}
 		
 	return 0;
@@ -332,8 +347,8 @@ irr::scene::ISceneNode* GraphicEngine::CreateModelNode(EngineEvent& node_data)
 						node->setMaterialTexture( 0, driver_->getTexture(it_texture_diffusal->second) );
 					}
 
-					node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
-					node->setMaterialFlag(irr::video::EMF_WIREFRAME, false);
+					//node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+					//node->setMaterialFlag(irr::video::EMF_WIREFRAME, false);
 
 					//TODO a enlever
 					//node->setScale(irr::core::vector3df(100,100,100));
@@ -345,8 +360,8 @@ irr::scene::ISceneNode* GraphicEngine::CreateModelNode(EngineEvent& node_data)
 				{
 					scene::IAnimatedMeshSceneNode* node = scene_manager_->addAnimatedMeshSceneNode(mesh);
 				
-					node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
-					node->setMaterialFlag(irr::video::EMF_WIREFRAME, false);
+					//node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+					//node->setMaterialFlag(irr::video::EMF_WIREFRAME, false);
 					//node->setMD2Animation(irr::scene::EMAT_STAND);
 					
 
@@ -372,16 +387,6 @@ irr::scene::ISceneNode* GraphicEngine::CreateModelNode(EngineEvent& node_data)
 irr::scene::ISceneNode* GraphicEngine::CreateLightNode(EngineEvent& node_data) 
 {
   // Bouml preserved body begin 0002A064
-
-
-	return 0;
-  // Bouml preserved body end 0002A064
-}
-
-irr::scene::ISceneNode* GraphicEngine::CreateBillboardNode(EngineEvent& node_data) 
-{
-  // Bouml preserved body begin 0002A0E4
-	//typedef
 	typedef irr::core::vector3df Vector3df;
 	typedef irr::core::stringc Stringc;
 
@@ -425,7 +430,9 @@ irr::scene::ISceneNode* GraphicEngine::CreateBillboardNode(EngineEvent& node_dat
 		scale = it_rotation->second;
 
 	if( it_light_type !=it_string_end )
+	{
 		light_type = it_light_type->second;
+	}
 
 	if( it_color_red != it_f32_end )
 		color_red = it_color_red->second;
@@ -443,9 +450,20 @@ irr::scene::ISceneNode* GraphicEngine::CreateBillboardNode(EngineEvent& node_dat
 	{
 		 irr::scene::ILightSceneNode* light_node;
 		 light_node = scene_manager_->addLightSceneNode(0,position, irr::video::SColorf(color_red, color_bleu, color_green), radius);
+		return light_node;
 	}
 
 	//todo volumetric et autre
+
+	return 0;
+  // Bouml preserved body end 0002A064
+}
+
+irr::scene::ISceneNode* GraphicEngine::CreateBillboardNode(EngineEvent& node_data) 
+{
+  // Bouml preserved body begin 0002A0E4
+	//typedef
+	
 
 
 	

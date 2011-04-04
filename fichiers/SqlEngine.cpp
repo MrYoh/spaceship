@@ -83,6 +83,7 @@ EngineEvent& SqlEngine::GetNodeData(irr::core::stringc name)
 	typedef irr::core::stringc Stringc;
 	typedef std::pair<Stringc, Vector3df> PairVector3df;
 	typedef std::pair<Stringc, Stringc> PairStringc;
+	typedef std::pair<Stringc, irr::f32> PairF32;
 
 	
 	if(!is_setup_ok_)
@@ -97,7 +98,8 @@ EngineEvent& SqlEngine::GetNodeData(irr::core::stringc name)
 	
 
 	//on recupere le type
-	requete  = "select t_node_type.name ";
+	requete  = "select t_node_type.name, position_x, position_y, position_z, ";
+	requete += "rotation_x, rotation_y, rotation_z, scale_x, scale_y, scale_z ";
 	requete += "from t_node_type ";
 	requete += "inner join t_node ";
 	requete += "on t_node_type.id_node_type = t_node.id_node_type ";
@@ -110,9 +112,14 @@ EngineEvent& SqlEngine::GetNodeData(irr::core::stringc name)
 
 	while(sqlite3_step(prepared_statement) == SQLITE_ROW)
 	{
-		Stringc type = (char *)sqlite3_column_text(prepared_statement, 0);
+		//TODO position, scale, rotation
+		
+		
+		
+		Stringc type_node = (char *)sqlite3_column_text(prepared_statement, 0);
+		engine_event_.string_data_.insert(PairStringc("type_node",type_node));
 
-		if(type == "animatedmesh" | type == "mesh")
+		if(type_node == "animatedmesh" | type_node == "mesh")
 		{
 			//la requete
 			/*requete  = "select MESH, TEXTURE from T_ANIMATED_MESH INNER JOIN T_NODE ";
@@ -141,9 +148,32 @@ EngineEvent& SqlEngine::GetNodeData(irr::core::stringc name)
 				engine_event_.string_data_.insert(PairStringc("texture_normal",texture_normal));
  			}
 		}
-		else if (type == "mesh")
+		else if (type_node == "light")
 		{
+			requete  = "select * from v_light where name = '";
+			requete += name.c_str();
+			requete += "';";
 
+			prepared_statement = Execute(requete);
+	
+			// On boucle tant que l'on trouve des objets dans la BDD
+			if(sqlite3_step(prepared_statement) == SQLITE_ROW)
+			{
+				Stringc light_type = (char *)sqlite3_column_text(prepared_statement, 1);
+				engine_event_.string_data_.insert(PairStringc("light_type",light_type));
+
+				irr::f32 color_red = sqlite3_column_double(prepared_statement, 2);
+				engine_event_.f32_data_.insert(PairF32("color_red",color_red));
+
+				irr::f32 color_bleu = sqlite3_column_double(prepared_statement, 3);
+				engine_event_.f32_data_.insert(PairF32("color_bleu",color_bleu));
+
+				irr::f32 color_green = sqlite3_column_double(prepared_statement, 4);
+				engine_event_.f32_data_.insert(PairF32("color_green",color_green));
+				
+				irr::f32 radius = sqlite3_column_double(prepared_statement, 5);
+				engine_event_.f32_data_.insert(PairF32("radius", radius));
+			}
 		}
 		
 	}
