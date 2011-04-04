@@ -39,8 +39,8 @@ bool Game::LoadLevel()
 	entity_manager_.CreateGameEntity(player_ship,"faery", core::vector3df(0,0,0));
 
 	shared_ptr<GameEntity> test = make_shared<GameEntity>();
-	entity_manager_.CreateGameEntity(test, "asteroid", core::vector3df(0,0,50));
-	test = make_shared<GameEntity>();
+	//entity_manager_.CreateGameEntity(test, "asteroid", core::vector3df(0,0,50));*/
+	//test = make_shared<GameEntity>();
 	entity_manager_.CreateGameEntity(test, "sydney", core::vector3df(50,0,0));
 
 	return true;

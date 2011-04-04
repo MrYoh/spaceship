@@ -381,7 +381,76 @@ irr::scene::ISceneNode* GraphicEngine::CreateLightNode(EngineEvent& node_data)
 irr::scene::ISceneNode* GraphicEngine::CreateBillboardNode(EngineEvent& node_data) 
 {
   // Bouml preserved body begin 0002A0E4
+	//typedef
+	typedef irr::core::vector3df Vector3df;
+	typedef irr::core::stringc Stringc;
 
+	//on cherche
+	//dans les vector3df
+	std::map<Stringc, Vector3df>::const_iterator
+		it_vector3df_end(node_data.vector3df_data_.end()),
+		it_position(node_data.vector3df_data_.find("position")),
+		it_scale(node_data.vector3df_data_.find("scale")),
+		it_rotation(node_data.vector3df_data_.find("rotation"));
+		
+
+	//dans les stringc
+	std::map<Stringc, Stringc>::const_iterator
+		it_string_end(node_data.string_data_.end()),
+		it_light_type(node_data.string_data_.find("light_type"));
+		
+	
+		
+	//Dans les f32
+	std::map<Stringc, f32>::const_iterator 
+		it_f32_end(node_data.f32_data_.end()),
+		it_color_red(node_data.f32_data_.find("color_red")),
+		it_color_bleu(node_data.f32_data_.find("color_bleu")),
+		it_color_green(node_data.f32_data_.find("color_green")),
+		it_radius(node_data.f32_data_.find("radius"));
+		
+	//Initialisation des variables possibles.
+	irr::core::vector3df position(0,0,0), rotation(0,0,0), scale(0,0,0);
+	irr::core::stringc light_type("");
+	irr::f32 color_red(0), color_bleu(0), color_green(0), radius(0);
+
+	//On les remplit si necessaire.
+	if(it_position!= it_vector3df_end)
+		position = it_position->second;
+
+	if(it_rotation!= it_vector3df_end)
+		rotation = it_scale->second;
+
+	if(it_scale!= it_vector3df_end)
+		scale = it_rotation->second;
+
+	if( it_light_type !=it_string_end )
+		light_type = it_light_type->second;
+
+	if( it_color_red != it_f32_end )
+		color_red = it_color_red->second;
+	if( it_color_bleu != it_f32_end )
+		color_bleu = it_color_bleu->second;
+	if( it_color_green != it_f32_end )
+		color_green = it_color_green->second;
+
+	if( it_radius !=it_f32_end )
+		radius = it_radius->second;
+
+
+	//On cree le node
+	if(light_type == "dynamic")
+	{
+		 irr::scene::ILightSceneNode* light_node;
+		 light_node = scene_manager_->addLightSceneNode(0,position, irr::video::SColorf(color_red, color_bleu, color_green), radius);
+	}
+
+	//todo volumetric et autre
+
+
+	
+	
+	
 
 	return 0;
   // Bouml preserved body end 0002A0E4
