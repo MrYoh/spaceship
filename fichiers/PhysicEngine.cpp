@@ -11,21 +11,31 @@ PhysicEngine::~PhysicEngine()
   // Bouml preserved body end 00022F64
 }
 
-IRigidBody* PhysicEngine::CreateRigidBody(irr::scene::ISceneNode* node, u32 mass, bool margin) 
+IRigidBody* PhysicEngine::CreateRigidBody(irr::core::stringc name, irr::scene::ISceneNode* node) 
 {
   // Bouml preserved body begin 0001F6E4
-	ICollisionShape* shape = new IBoxShape(node, mass, margin);
-	IRigidBody* body= world_->addRigidBody(shape);
+	typedef irr::core::stringc Stringc;
 	
+	SqlEngine sql;
+	EngineEvent body_data = sql.GetBodyData(name);
+
+	std::map<Stringc, f32>::const_iterator 
+		it_f32_end(body_data.f32_data_.end()),
+		it_mass(body_data.f32_data_.find("mass"));
 	
+	if (it_f32_end != it_mass)
+	{
+		if( it_mass->second >= 0 )
+		{
+			ICollisionShape* shape = new IBoxShape(node, it_mass->second, false);
+			IRigidBody* body= world_->addRigidBody(shape);
+
+			return body;
+		}
+	}
 	
-	//body->setLinearVelocity(rot);
+	return 0;
 	
-	
-	
-	//body->setLinearVelocity(irr::core::vector3df(0,10,0));
-	//body->applyCentralImpulse(irr::core::vector3df((0,-1000,10)));
-	return body;
   // Bouml preserved body end 0001F6E4
 }
 

@@ -268,46 +268,6 @@ irr::scene::ISceneNode* GraphicEngine::CreateModelNode(EngineEvent& node_data)
 		it_texture_normal(node_data.string_data_.find("texture_normal"));
 		
 
-	//on cree le mesh
-	/*if(it_mesh!=it_string_end)
-	{
-		scene::IAnimatedMesh* mesh = scene_manager_->getMesh(it_mesh->second);
-		if(mesh)
-		{
-			
-			scene::IAnimatedMeshSceneNode* node = scene_manager_->addAnimatedMeshSceneNode(mesh);
-
-			if (node)
-			{
-					
-			
-				node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
-				//node->setMaterialFlag(irr::video::EMF_WIREFRAME, false);
-				node->setMD2Animation(irr::scene::EMAT_STAND);
-
-				if(it_texture_diffusal!=it_string_end)
-				{
-					node->setMaterialTexture( 0, driver_->getTexture(it_texture_diffusal->second) );
-				}
-				
-				//On met en place la normal map pour le bumpmap
-				if(it_texture_normal!=it_string_end)
-				{
-					 video::ITexture* normalMap =
-                        driver->getTexture("it_texture_normal->second");
-
-					 if (normalMap)
-                        driver->makeNormalMapTexture(normalMap, 9.0f);
-					
-					node->setMaterialTexture( 1, driver_->getTexture(normalMap) );
-					node->setMaterialType(irr::video::EMT_PARALLAX_MAP_SOLID);
-				}
-				return node;	
-			}
-			
-		}
-	}*/
-
 
 	if(it_mesh!=it_string_end)
 	{

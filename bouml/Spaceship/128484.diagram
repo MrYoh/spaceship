@@ -115,12 +115,12 @@ relationcanvas 132196 relation_ref 128868 // <dependency>
 end
 relationcanvas 132324 relation_ref 129636 // <directional aggregation>
   from ref 128228 z 3006 to ref 132068
-  role_a_pos 587 898 3000 no_role_b
+  role_a_pos 587 916 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 132452 relation_ref 128484 // <aggregation>
   from ref 128484 z 3006 to ref 132068
-  role_a_pos 586 923 3000 no_role_b
+  role_a_pos 586 941 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 132580 relation_ref 165604 // <dependency>

@@ -1,4 +1,4 @@
-window_sizes 1433 1174 301 886 800 82
+window_sizes 1126 1162 301 886 800 82
 diagrams
   active  classdiagram_ref 128100 // graphic
     886 1022 100 4 0 0
@@ -14,9 +14,12 @@ diagrams
     708 817 100 4 0 0
 end
 show_stereotypes
-selected 
-package_ref 129 // Spaceship
+selected class_ref 128740 // PhysicEngine
 open
+  class_ref 128484 // EngineEvent
+  classview_ref 128100 // graphic
+  class_ref 128740 // PhysicEngine
+  class_ref 149092 // PlayerShipEntity
 end
 nocompletion
 end

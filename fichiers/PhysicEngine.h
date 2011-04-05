@@ -17,7 +17,7 @@ class PhysicEngine : public Singleton<PhysicEngine>
   public:
     ~PhysicEngine();
 
-    IRigidBody* CreateRigidBody(irr::scene::ISceneNode* node, u32 mass, bool margin);
+    IRigidBody* CreateRigidBody(irr::core::stringc name, irr::scene::ISceneNode* node);
 
     bool Initialize();
 

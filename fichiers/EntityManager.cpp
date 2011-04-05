@@ -20,9 +20,6 @@ shared_ptr<GameEntity> EntityManager::CreateGameEntity(shared_ptr<GameEntity> ga
   // Bouml preserved body begin 00026CE4
 	//TODO
 	
-	//on crée le gameentity
-	//shared_ptr<GameEntity> game_entity = make_shared<GameEntity>();
-
 	game_entity->set_game(game_);
 	
 	//on cree le node et body 
@@ -33,7 +30,8 @@ shared_ptr<GameEntity> EntityManager::CreateGameEntity(shared_ptr<GameEntity> ga
 		node->setPosition(position);
 		game_entity->set_node(node);
 
-		IRigidBody* body = PhysicEngine::GetInstance()->CreateRigidBody(node,10,true);
+		
+		IRigidBody* body = PhysicEngine::GetInstance()->CreateRigidBody(name,node);
 		if(body)
 		{
 			game_entity->set_body(body);

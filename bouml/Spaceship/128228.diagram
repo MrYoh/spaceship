@@ -39,9 +39,9 @@ end
 relationcanvas 128612 relation_ref 128484 // <aggregation>
   geometry HVH
   from ref 128228 z 2006 to point 592 503
-  line 131556 z 2006 to point 592 285
+  line 131556 z 2006 to point 592 309
   line 131684 z 2006 to ref 128356
-  role_a_pos 473 269 3000 no_role_b
+  role_a_pos 473 293 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 129252 relation_ref 129252 // <directional aggregation>
@@ -58,9 +58,9 @@ relationcanvas 129636 relation_ref 129380 // <directional aggregation>
 end
 relationcanvas 130020 relation_ref 129636 // <directional aggregation>
   geometry HVr
-  from ref 129764 z 2006 to point 777 285
+  from ref 129764 z 2006 to point 777 309
   line 131300 z 2006 to ref 128356
-  role_a_pos 473 269 3000 no_role_b
+  role_a_pos 473 293 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 130148 relation_ref 129764 // <directional aggregation>
@@ -86,7 +86,7 @@ relationcanvas 130788 relation_ref 131556 // <dependency>
 end
 relationcanvas 131044 relation_ref 138084 // <dependency>
   geometry VHr
-  from ref 128356 z 2006 to point 92 285
+  from ref 128356 z 2006 to point 92 309
   line 132964 z 2006 to ref 130916
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b

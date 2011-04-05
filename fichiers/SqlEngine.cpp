@@ -180,26 +180,7 @@ EngineEvent& SqlEngine::GetNodeData(irr::core::stringc name)
 
 	
 	sqlite3_finalize(prepared_statement);
-	/*
-	irr::u32 type(0);
-	engine_event_.type_ = type;
 	
-	Vector3df position(0,0,0);
-	engine_event_.vector3df_data_.insert(PairVector3df("position",position));
-	
-	Vector3df scale(0,0,0);
-	engine_event_.vector3df_data_.insert(PairVector3df("scale",scale));
-
-	Vector3df rotation(0,0,0);
-	engine_event_.vector3df_data_.insert(PairVector3df("rotation",rotation));
-
-	Stringc mesh("sydney.md2");
-	engine_event_.string_data_.insert(PairStringc("mesh",mesh));
-
-	Stringc texture("sydney.bmp");
-	engine_event_.string_data_.insert(PairStringc("texture",texture));*/
-
-		
 	return engine_event_;
   // Bouml preserved body end 00024D64
 }
@@ -207,6 +188,43 @@ EngineEvent& SqlEngine::GetNodeData(irr::core::stringc name)
 EngineEvent& SqlEngine::GetBodyData(irr::core::stringc name) 
 {
   // Bouml preserved body begin 00024DE4
+
+	typedef irr::core::stringc Stringc;
+	typedef std::pair<Stringc, Stringc> PairStringc;
+	typedef std::pair<Stringc, irr::f32> PairF32;
+
+
+	if(!is_setup_ok_)
+	{
+		Initialize();
+	}
+	
+	//variqble str pour requete
+	irr::core::stringc requete;
+	sqlite3_stmt* prepared_statement;
+
+	
+
+	//on recupere le type
+	requete  = "select mass ";
+	requete += "from t_node ";
+	requete += "where t_node.name = '";
+	requete += name.c_str();
+	requete += "';";
+		
+	
+	prepared_statement = Execute(requete);
+
+	while(sqlite3_step(prepared_statement) == SQLITE_ROW)
+	{
+		irr::f32 mass = sqlite3_column_double(prepared_statement, 0);
+		engine_event_.f32_data_.insert(PairF32("mass",mass));
+	}
+	
+	sqlite3_finalize(prepared_statement);
+
+
+
 
 	return engine_event_;
   // Bouml preserved body end 00024DE4
