@@ -82,6 +82,8 @@ irr::scene::ISceneNode* GraphicEngine::CreateSceneNode(irr::core::stringc name, 
 		}
 		else if (it_type_node->second == "mesh" | it_type_node->second == "animatedmesh")
 			node = CreateModelNode(node_data);
+		else if ( it_type_node->second == "billboard" )
+			node = CreateBillboardNode(node_data);
 		
 	
 	
@@ -160,12 +162,12 @@ irr::scene::ISceneNode* GraphicEngine::CreateCamera()
 {
   // Bouml preserved body begin 0001FBE4
 
-	//irr::scene::ISceneNode* node = scene_manager_->addCameraSceneNodeFPS();
-	irr::scene::ISceneNode* node = scene_manager_->addCameraSceneNode(
+	irr::scene::ISceneNode* node = scene_manager_->addCameraSceneNodeFPS();
+	/*irr::scene::ISceneNode* node = scene_manager_->addCameraSceneNode(
 		0,
 		irr::core::vector3df(0,500,0), 
 		irr::core::vector3df(0,0,0),
-		0);
+		0);*/
 
 	return node;
   // Bouml preserved body end 0001FBE4
@@ -424,13 +426,81 @@ irr::scene::ISceneNode* GraphicEngine::CreateBillboardNode(EngineEvent& node_dat
   // Bouml preserved body begin 0002A0E4
 	//typedef
 	
+	typedef irr::core::vector3df Vector3df;
+	typedef irr::core::stringc Stringc;
+
+	//on cherche
+	//dans les vector3df
+	std::map<Stringc, Vector3df>::const_iterator
+		it_vector3df_end(node_data.vector3df_data_.end()),
+		it_position(node_data.vector3df_data_.find("position")),
+		it_scale(node_data.vector3df_data_.find("scale")),
+		it_rotation(node_data.vector3df_data_.find("rotation"));
+		
+
+	//dans les stringc
+	std::map<Stringc, Stringc>::const_iterator
+		it_string_end(node_data.string_data_.end()),
+		it_texture(node_data.string_data_.find("texture"));
+		
+	
+		
+	//Dans les f32
+	std::map<Stringc, f32>::const_iterator 
+		it_f32_end(node_data.f32_data_.end()),
+		it_color_red(node_data.f32_data_.find("color_red")),
+		it_color_bleu(node_data.f32_data_.find("color_bleu")),
+		it_color_green(node_data.f32_data_.find("color_green")),
+		it_size_height(node_data.f32_data_.find("size_height")),
+		it_size_width(node_data.f32_data_.find("size_width"));
+		
+	//Initialisation des variables possibles.
+	irr::core::vector3df position(0,0,0), rotation(0,0,0), scale(0,0,0);
+	irr::core::stringc texture("");
+	irr::f32 color_red(0), color_bleu(0), color_green(0), size_width(0), size_height(0);
+
+	//On les remplit si necessaire.
+	if(it_position!= it_vector3df_end)
+		position = it_position->second;
+
+	if(it_rotation!= it_vector3df_end)
+		rotation = it_scale->second;
+
+	if(it_scale!= it_vector3df_end)
+		scale = it_rotation->second;
+
+	if( it_texture !=it_string_end )
+	{
+		texture = it_texture->second;
+	}
+
+	if( it_color_red != it_f32_end )
+		color_red = it_color_red->second;
+	if( it_color_bleu != it_f32_end )
+		color_bleu = it_color_bleu->second;
+	if( it_color_green != it_f32_end )
+		color_green = it_color_green->second;
+
+	if( it_size_width != it_f32_end )
+		size_width = it_size_width->second;
+
+	if( it_size_height != it_f32_end )
+		size_height = it_size_height->second;
 
 
-	
-	
+	//todo color
+
+	irr::scene::IBillboardSceneNode * bill = scene_manager_->addBillboardSceneNode();
+        bill->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR );
+        bill->setMaterialTexture(0, driver_->getTexture(texture));
+        /*bill->setMaterialFlag(video::EMF_LIGHTING, true);
+        bill->setMaterialFlag(video::EMF_ZBUFFER, true);*/
+        bill->setSize(core::dimension2d<f32>(size_width, size_height));
+
+	return bill;
+		 
 	
 
-	return 0;
   // Bouml preserved body end 0002A0E4
 }
 

@@ -175,6 +175,40 @@ EngineEvent& SqlEngine::GetNodeData(irr::core::stringc name)
 				engine_event_.f32_data_.insert(PairF32("radius", radius));
 			}
 		}
+		else if(type_node == "billboard")
+		{
+			requete  = "select * from v_billboard where name = '";
+			requete += name.c_str();
+			requete += "';";
+
+			prepared_statement = Execute(requete);
+	
+			// On boucle tant que l'on trouve des objets dans la BDD
+			if(sqlite3_step(prepared_statement) == SQLITE_ROW)
+			{
+				Stringc texture = (char *)sqlite3_column_text(prepared_statement, 1);
+				engine_event_.string_data_.insert(PairStringc("texture",texture));
+
+				irr::f32 color_red = sqlite3_column_double(prepared_statement, 2);
+				engine_event_.f32_data_.insert(PairF32("color_red",color_red));
+
+				irr::f32 color_bleu = sqlite3_column_double(prepared_statement, 3);
+				engine_event_.f32_data_.insert(PairF32("color_bleu",color_bleu));
+
+				irr::f32 color_green = sqlite3_column_double(prepared_statement, 4);
+				engine_event_.f32_data_.insert(PairF32("color_green",color_green));
+				
+				irr::f32 size_width = sqlite3_column_double(prepared_statement, 5);
+				engine_event_.f32_data_.insert(PairF32("size_width", size_width));
+
+				irr::f32 size_height = sqlite3_column_double(prepared_statement, 5);
+				engine_event_.f32_data_.insert(PairF32("size_height", size_height));
+
+
+			}
+
+
+		}
 		
 	}
 
