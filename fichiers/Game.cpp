@@ -82,3 +82,10 @@ bool Game::IsKeyDown(irr::EKEY_CODE key_is_down)
   // Bouml preserved body end 00026AE4
 }
 
+bool Game::IsMouseDown(irr::EMOUSE_INPUT_EVENT mouse_is_down) 
+{
+  // Bouml preserved body begin 0002BB64
+	return GraphicEngine::GetInstance()->IsMouseDown(mouse_is_down);
+  // Bouml preserved body end 0002BB64
+}
+

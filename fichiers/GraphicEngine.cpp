@@ -9,6 +9,12 @@ GraphicEngine::GraphicEngine()
   // Bouml preserved body begin 00026A64
 	for (u32 i=0; i<KEY_KEY_CODES_COUNT; ++i)
                         key_is_down_[i] = false;
+
+	for (u32 i=0; i<EMIE_COUNT; ++i)
+                        mouse_is_down_[i] = false;
+
+
+
   // Bouml preserved body end 00026A64
 }
 
@@ -108,11 +114,6 @@ bool GraphicEngine::UpdateFrame()
 		last_frame_time_=device_->getTimer()->getTime();
 	}
 	
-
-
-
-
-
 
 	if(device_->run())
 	{
@@ -233,6 +234,24 @@ bool GraphicEngine::OnEvent(const SEvent& event)
     if (event.EventType == irr::EET_KEY_INPUT_EVENT)
 	{
             key_is_down_[event.KeyInput.Key] = event.KeyInput.PressedDown;
+	}
+
+	if (event.EventType == irr::EET_MOUSE_INPUT_EVENT )
+	{
+          
+		if (event.MouseInput.isLeftPressed ())
+			mouse_is_down_[EMIE_LMOUSE_PRESSED_DOWN] = true;
+		else mouse_is_down_[EMIE_LMOUSE_PRESSED_DOWN] = false;
+
+		if (event.MouseInput.isRightPressed ())
+			mouse_is_down_[EMIE_RMOUSE_PRESSED_DOWN] = true;
+		else mouse_is_down_[EMIE_RMOUSE_PRESSED_DOWN] = false;
+
+		if (event.MouseInput.isMiddlePressed ())
+			mouse_is_down_[EMIE_MMOUSE_PRESSED_DOWN] = true;
+		else mouse_is_down_[EMIE_MMOUSE_PRESSED_DOWN] = false;
+
+
 	}
 
     return false;
@@ -521,5 +540,12 @@ irr::scene::ISceneNode* GraphicEngine::CreateBillboardNode(EngineEvent& node_dat
 	
 
   // Bouml preserved body end 0002A0E4
+}
+
+bool GraphicEngine::IsMouseDown(irr::EMOUSE_INPUT_EVENT mouse_code) 
+{
+  // Bouml preserved body begin 0002BAE4
+	return mouse_is_down_[mouse_code];
+  // Bouml preserved body end 0002BAE4
 }
 

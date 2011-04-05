@@ -38,5 +38,16 @@ class Game
 
     GameWorld game_world_;
 
+
+  public:
+    inline  EntityManager* entity_manager();
+
+    bool IsMouseDown(irr::EMOUSE_INPUT_EVENT mouse_is_down);
+
 };
+inline  EntityManager* Game::entity_manager() 
+{
+  return &entity_manager_;
+}
+
 #endif

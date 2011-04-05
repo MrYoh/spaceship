@@ -66,6 +66,12 @@ class GraphicEngine : public Singleton<GraphicEngine>, public IEventReceiver
 
     irr::scene::ISceneNode* CreateBillboardNode(EngineEvent& node_data);
 
+    bool IsMouseDown(irr::EMOUSE_INPUT_EVENT mouse_code);
+
+
+  private:
+    bool mouse_is_down_[EMIE_COUNT];
+
 };
 inline  irr::IrrlichtDevice* GraphicEngine::device() 
 {
