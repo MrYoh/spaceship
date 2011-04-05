@@ -144,10 +144,10 @@ bool GraphicEngine::UpdateFrame()
                     core::stringw str = L"Irrlicht Engine - Quake 3 Map example [";
                     str += driver_->getName();
                     str += "] FPS:";
-                    //str += fps;.
+                    str += fps;
 					str += frame_delta_time_;
 
-                    //device_->setWindowCaption(str.c_str());
+                    device_->setWindowCaption(str.c_str());
                     last_fps_ = fps;
             }
 		}
@@ -285,38 +285,43 @@ irr::scene::ISceneNode* GraphicEngine::CreateModelNode(EngineEvent& node_data)
 				if(it_texture_normal->second != "")
 				{
 					//TODO a enlever
-					scene_manager_->getMeshManipulator()->makePlanarTextureMapping(
-                                mesh->getMesh(0), 0.003f);
+					/*scene_manager_->getMeshManipulator()->makePlanarTextureMapping(
+                                mesh->getMesh(0), 0.003f);*/
 					
-					irr::video::ITexture* normalMap = driver_->getTexture(it_texture_normal->second);
-					//TODO texture
-
-					if (normalMap)
-						driver_->makeNormalMapTexture(normalMap, 9.0f);
-
+					//LE mesh
 					irr::scene::IMesh* tangent_mesh = 
 						scene_manager_->getMeshManipulator()->createMeshWithTangents(mesh->getMesh(0));
 					
 					scene::ISceneNode* node = scene_manager_->addMeshSceneNode(tangent_mesh);
-										
-					
-					node->setMaterialTexture( 1,normalMap);
-					node->setMaterialType(irr::video::EMT_PARALLAX_MAP_SOLID);
 
-
+					//difussal
 					if(it_texture_diffusal!=it_string_end)
 					{
 						node->setMaterialTexture( 0, driver_->getTexture(it_texture_diffusal->second) );
 					}
+					
+					//on applique la texture normal
+					irr::video::ITexture* normalMap = driver_->getTexture(it_texture_normal->second);
+					//TODO texture
+
+					if (normalMap)
+						driver_->makeNormalMapTexture(normalMap, 20.0f);
+					
+					node->setMaterialTexture( 1,normalMap);
+					node->setMaterialType(irr::video::EMT_PARALLAX_MAP_SOLID);
+					//node->setMaterialType(video::EMT_NORMAL_MAP_TRANSPARENT_VERTEX_ALPHA);
+
+
+					
 
 					//node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 					//node->setMaterialFlag(irr::video::EMF_WIREFRAME, false);
 
 					//TODO a enlever
-					//node->setScale(irr::core::vector3df(100,100,100));
+					//node->setScale(irr::core::vector3df(50,50,50));
 
 					
-
+					return node;
 
 				}else 
 				{

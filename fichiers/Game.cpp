@@ -35,17 +35,17 @@ bool Game::LoadLevel()
 	physic_engine_ = PhysicEngine::GetInstance();
 	physic_engine_->Initialize();
 
-	shared_ptr<PlayerShipEntity> player_ship = make_shared<PlayerShipEntity>();
-	entity_manager_.CreateGameEntity(player_ship,"faery", core::vector3df(0,0,0));
+	
+	entity_manager_.CreateGameEntity(make_shared<PlayerShipEntity>(),"asteroid", core::vector3df(0,0,0));
+	/*entity_manager_.CreateGameEntity(make_shared<GameEntity>(), "sydney", core::vector3df(50,0,30));
+	entity_manager_.CreateGameEntity(make_shared<GameEntity>(), "sydney", core::vector3df(50,0,20));
+	entity_manager_.CreateGameEntity(make_shared<GameEntity>(), "sydney", core::vector3df(50,0,10));*/
 
-	shared_ptr<GameEntity> test = make_shared<GameEntity>();
-	entity_manager_.CreateGameEntity(test, "billboard_rouge", core::vector3df(50,0,50));
-	test = make_shared<GameEntity>();
-	entity_manager_.CreateGameEntity(test, "light_white", core::vector3df(50,0,0));
-	test = make_shared<GameEntity>();
-	entity_manager_.CreateGameEntity(test, "light_white", core::vector3df(50,50,0));
-	test = make_shared<GameEntity>();
-	entity_manager_.CreateGameEntity(test, "light_white", core::vector3df(50,50,50));
+	
+	entity_manager_.CreateGameEntity(make_shared<GameEntity>(), "billboard_rouge", core::vector3df(120,0,120));
+	entity_manager_.CreateGameEntity(make_shared<GameEntity>(), "light_white", core::vector3df(120,0,0));
+	entity_manager_.CreateGameEntity(make_shared<GameEntity>(), "light_white", core::vector3df(120,120,0));
+	entity_manager_.CreateGameEntity(make_shared<GameEntity>(), "light_white", core::vector3df(120,120,120));
 
 	return true;
   // Bouml preserved body end 0001F864
