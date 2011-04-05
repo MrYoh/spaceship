@@ -119,6 +119,30 @@ EngineEvent& SqlEngine::GetNodeData(irr::core::stringc name)
 		Stringc type_node = (char *)sqlite3_column_text(prepared_statement, 0);
 		engine_event_.string_data_.insert(PairStringc("type_node",type_node));
 
+		
+		//on recupere la position
+		irr::f32 position_x = sqlite3_column_double(prepared_statement, 1);
+		irr::f32 position_y = sqlite3_column_double(prepared_statement, 2);
+		irr::f32 position_z = sqlite3_column_double(prepared_statement, 3);
+
+		engine_event_.vector3df_data_.insert(PairVector3df("position",Vector3df(position_x, position_y, position_z)));
+		
+		//on recupere la rotation
+		irr::f32 rotation_x = sqlite3_column_double(prepared_statement, 4);
+		irr::f32 rotation_y = sqlite3_column_double(prepared_statement, 5);
+		irr::f32 rotation_z = sqlite3_column_double(prepared_statement, 6);
+
+		engine_event_.vector3df_data_.insert(PairVector3df("rotation",Vector3df(rotation_x, rotation_y, rotation_z)));
+
+		//on recupere le scale
+		irr::f32 scale_x = sqlite3_column_double(prepared_statement, 7);
+		irr::f32 scale_y = sqlite3_column_double(prepared_statement, 8);
+		irr::f32 scale_z = sqlite3_column_double(prepared_statement, 9);
+
+		engine_event_.vector3df_data_.insert(PairVector3df("scale",Vector3df(scale_x, scale_y, scale_z)));
+
+
+
 		if(type_node == "animatedmesh" | type_node == "mesh")
 		{
 			//la requete

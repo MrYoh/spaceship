@@ -320,6 +320,12 @@ irr::scene::ISceneNode* GraphicEngine::CreateModelNode(EngineEvent& node_data)
 					//TODO a enlever
 					//node->setScale(irr::core::vector3df(50,50,50));
 
+					node->setPosition(it_position->second);
+					node->setRotation(it_rotation->second);
+					if(it_scale->second != irr::core::vector3df(0,0,0))
+					{
+						node->setScale(it_scale->second);
+					}
 					
 					return node;
 
@@ -336,6 +342,14 @@ irr::scene::ISceneNode* GraphicEngine::CreateModelNode(EngineEvent& node_data)
 					{
 						node->setMaterialTexture( 0, driver_->getTexture(it_texture_diffusal->second) );
 					}
+					
+					node->setPosition(it_position->second);
+					node->setRotation(it_rotation->second);
+					if(it_scale->second != irr::core::vector3df(0,0,0))
+					{
+						node->setScale(it_scale->second);
+					}					
+					
 					return node;	
 				}
 			
