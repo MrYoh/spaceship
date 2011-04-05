@@ -36,10 +36,10 @@ bool Game::LoadLevel()
 	physic_engine_->Initialize();
 
 	
-	entity_manager_.CreateGameEntity(make_shared<PlayerShipEntity>(),"asteroid", core::vector3df(0,0,0));
-	/*entity_manager_.CreateGameEntity(make_shared<GameEntity>(), "sydney", core::vector3df(50,0,30));
+	entity_manager_.CreateGameEntity(make_shared<GameEntity>(),"asteroid", core::vector3df(0,0,0));
+	entity_manager_.CreateGameEntity(make_shared<PlayerShipEntity>(), "sydney", core::vector3df(100,0,100));
 	entity_manager_.CreateGameEntity(make_shared<GameEntity>(), "sydney", core::vector3df(50,0,20));
-	entity_manager_.CreateGameEntity(make_shared<GameEntity>(), "sydney", core::vector3df(50,0,10));*/
+	entity_manager_.CreateGameEntity(make_shared<GameEntity>(), "sydney", core::vector3df(50,0,10));
 
 	
 	entity_manager_.CreateGameEntity(make_shared<GameEntity>(), "billboard_rouge", core::vector3df(120,0,120));

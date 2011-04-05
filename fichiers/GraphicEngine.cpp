@@ -162,12 +162,12 @@ irr::scene::ISceneNode* GraphicEngine::CreateCamera()
 {
   // Bouml preserved body begin 0001FBE4
 
-	irr::scene::ISceneNode* node = scene_manager_->addCameraSceneNodeFPS();
-	/*irr::scene::ISceneNode* node = scene_manager_->addCameraSceneNode(
+	//irr::scene::ISceneNode* node = scene_manager_->addCameraSceneNodeFPS();
+	irr::scene::ISceneNode* node = scene_manager_->addCameraSceneNode(
 		0,
 		irr::core::vector3df(0,500,0), 
 		irr::core::vector3df(0,0,0),
-		0);*/
+		0);
 
 	return node;
   // Bouml preserved body end 0001FBE4
